@@ -1,0 +1,423 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Portfolio Website</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: 'Courier New', monospace;
+    }
+
+    #container {
+      display: flex;
+      height: 100vh;
+    }
+
+    #left-panel {
+      flex: 1;
+      background-color: #0188cc;
+      padding: 20px;
+    }
+
+    #right-panel {
+      flex: 3;
+      background-color: #000000;
+      padding: 20px;
+      border-left: 1px solid #ffffff;
+      display: flex;
+      flex-direction: column;
+    }
+
+    h1 {
+      color: #000000;
+      font-size: 24px;
+    }
+
+    p {
+      color: #000000;
+      font-size: 18px;
+      line-height: 1.5;
+    }
+
+
+    #top-panel {
+      border: 1px solid #dddddd;
+      padding: 10px;
+      max-height: 90%;
+      overflow-y: scroll;
+      color: #ffffff;
+      width: 60%;
+      word-wrap: break-word;
+    }
+
+    #bottom-panel {
+      border: 1px solid #dddddd;
+      padding: 10px;
+      color: #ffffff;
+      width: 60%;
+      word-wrap: break-word;
+    }
+  </style>
+   <script>
+    window.addEventListener('DOMContentLoaded', (event) => {
+      const topPanel = document.getElementById('top-panel');
+      topPanel.scrollTop = topPanel.scrollHeight;
+    });
+  </script>
+</head>
+<body>
+  <div id="container">
+    <div id="left-panel">
+      <h1>Welcome to My Portfolio</h1>
+      <p>Here you can explore my web deployment skills and projects.</p>
+    </div>
+    <div id="right-panel">
+      <div id="top-panel">
+        <pre>
+          <code>
+            Welcome to Linux Terminal
+
+            Username: guest
+            Hostname: example.com
+            Directory: /home/guest
+
+            $ ssh -i protag2-key ec2-user@34.203.239.160
+Last login: Wed May 17 02:19:22 2023 from cpe-70-121-66-123.austin.res.rr.com
+
+       __|  __|_  )
+       _|  (     /   Amazon Linux 2 AMI
+      ___|\___|___|
+
+https://aws.amazon.com/amazon-linux-2/
+10 package(s) needed for security, out of 20 available
+Run "sudo yum update" to apply all updates.
+[ec2-user@ip-10-0-1-26 ~]$ sudo yum update
+Loaded plugins: extras_suggestions, langpacks, priorities, update-motd
+amzn2-core                                                                            | 3.7 kB  00:00:00     
+Resolving Dependencies
+--> Running transaction check
+---> Package cloud-init.noarch 0:19.3-46.amzn2 will be updated
+---> Package cloud-init.noarch 0:19.3-46.amzn2.0.1 will be an update
+---> Package glib2.x86_64 0:2.56.1-9.amzn2.0.2 will be updated
+---> Package glib2.x86_64 0:2.56.1-9.amzn2.0.3 will be an update
+---> Package grub2.x86_64 1:2.06-9.amzn2.0.1 will be obsoleted
+---> Package grub2.x86_64 1:2.06-9.amzn2.0.3 will be obsoleting
+---> Package grub2-common.noarch 1:2.06-9.amzn2.0.1 will be updated
+---> Package grub2-common.noarch 1:2.06-9.amzn2.0.3 will be an update
+---> Package grub2-efi-x64-ec2.x86_64 1:2.06-9.amzn2.0.1 will be updated
+---> Package grub2-efi-x64-ec2.x86_64 1:2.06-9.amzn2.0.3 will be an update
+---> Package grub2-pc.x86_64 1:2.06-9.amzn2.0.1 will be updated
+---> Package grub2-pc.x86_64 1:2.06-9.amzn2.0.3 will be obsoleting
+---> Package grub2-pc-modules.noarch 1:2.06-9.amzn2.0.1 will be updated
+---> Package grub2-pc-modules.noarch 1:2.06-9.amzn2.0.3 will be an update
+---> Package grub2-tools.x86_64 1:2.06-9.amzn2.0.1 will be obsoleted
+---> Package grub2-tools.x86_64 1:2.06-9.amzn2.0.3 will be obsoleting
+---> Package grub2-tools-efi.x86_64 1:2.06-9.amzn2.0.3 will be obsoleting
+---> Package grub2-tools-extra.x86_64 1:2.06-9.amzn2.0.3 will be obsoleting
+---> Package grub2-tools-minimal.x86_64 1:2.06-9.amzn2.0.1 will be updated
+---> Package grub2-tools-minimal.x86_64 1:2.06-9.amzn2.0.3 will be obsoleting
+---> Package java-1.8.0-openjdk.x86_64 1:1.8.0.362.b08-1.amzn2.0.1 will be updated
+---> Package java-1.8.0-openjdk.x86_64 1:1.8.0.372.b07-1.amzn2.0.1 will be an update
+---> Package java-1.8.0-openjdk-devel.x86_64 1:1.8.0.362.b08-1.amzn2.0.1 will be updated
+---> Package java-1.8.0-openjdk-devel.x86_64 1:1.8.0.372.b07-1.amzn2.0.1 will be an update
+---> Package java-1.8.0-openjdk-headless.x86_64 1:1.8.0.362.b08-1.amzn2.0.1 will be updated
+---> Package java-1.8.0-openjdk-headless.x86_64 1:1.8.0.372.b07-1.amzn2.0.1 will be an update
+---> Package libssh2.x86_64 0:1.4.3-12.amzn2.2.3 will be updated
+---> Package libssh2.x86_64 0:1.4.3-12.amzn2.2.4 will be an update
+---> Package libwebp.x86_64 0:0.3.0-10.amzn2.0.1 will be updated
+---> Package libwebp.x86_64 0:0.3.0-10.amzn2.0.2 will be an update
+---> Package perl.x86_64 4:5.16.3-299.amzn2.0.1 will be updated
+---> Package perl.x86_64 4:5.16.3-299.amzn2.0.2 will be an update
+---> Package perl-Pod-Escapes.noarch 1:1.04-299.amzn2.0.1 will be updated
+---> Package perl-Pod-Escapes.noarch 1:1.04-299.amzn2.0.2 will be an update
+---> Package perl-libs.x86_64 4:5.16.3-299.amzn2.0.1 will be updated
+---> Package perl-libs.x86_64 4:5.16.3-299.amzn2.0.2 will be an update
+---> Package perl-macros.x86_64 4:5.16.3-299.amzn2.0.1 will be updated
+---> Package perl-macros.x86_64 4:5.16.3-299.amzn2.0.2 will be an update
+--> Finished Dependency Resolution
+
+Dependencies Resolved
+
+============================================================================================================= Package                            Arch          Version                            Repository         Size 
+=============================================================================================================Installing:
+ grub2                              x86_64        1:2.06-9.amzn2.0.3                 amzn2-core         46 k 
+     replacing  grub2.x86_64 1:2.06-9.amzn2.0.1
+ grub2-pc                           x86_64        1:2.06-9.amzn2.0.3                 amzn2-core         45 k 
+     replacing  grub2.x86_64 1:2.06-9.amzn2.0.1
+ grub2-tools                        x86_64        1:2.06-9.amzn2.0.3                 amzn2-core        2.0 M 
+     replacing  grub2-tools.x86_64 1:2.06-9.amzn2.0.1
+ grub2-tools-efi                    x86_64        1:2.06-9.amzn2.0.3                 amzn2-core        560 k 
+     replacing  grub2-tools.x86_64 1:2.06-9.amzn2.0.1
+ grub2-tools-extra                  x86_64        1:2.06-9.amzn2.0.3                 amzn2-core        1.0 M 
+     replacing  grub2-tools.x86_64 1:2.06-9.amzn2.0.1
+ grub2-tools-minimal                x86_64        1:2.06-9.amzn2.0.3                 amzn2-core        624 k 
+     replacing  grub2-tools.x86_64 1:2.06-9.amzn2.0.1
+Updating:
+ cloud-init                         noarch        19.3-46.amzn2.0.1                  amzn2-core        927 k 
+ glib2                              x86_64        2.56.1-9.amzn2.0.3                 amzn2-core        2.4 M 
+ grub2-common                       noarch        1:2.06-9.amzn2.0.3                 amzn2-core        1.8 M 
+ grub2-efi-x64-ec2                  x86_64        1:2.06-9.amzn2.0.3                 amzn2-core        282 k 
+ grub2-pc-modules                   noarch        1:2.06-9.amzn2.0.3                 amzn2-core        938 k 
+ java-1.8.0-openjdk                 x86_64        1:1.8.0.372.b07-1.amzn2.0.1        amzn2-core        314 k 
+ java-1.8.0-openjdk-devel           x86_64        1:1.8.0.372.b07-1.amzn2.0.1        amzn2-core        9.8 M 
+ java-1.8.0-openjdk-headless        x86_64        1:1.8.0.372.b07-1.amzn2.0.1        amzn2-core         33 M 
+ libssh2                            x86_64        1.4.3-12.amzn2.2.4                 amzn2-core        136 k 
+ libwebp                            x86_64        0.3.0-10.amzn2.0.2                 amzn2-core        170 k 
+ perl                               x86_64        4:5.16.3-299.amzn2.0.2             amzn2-core        8.0 M 
+ perl-Pod-Escapes                   noarch        1:1.04-299.amzn2.0.2               amzn2-core         52 k 
+ perl-libs                          x86_64        4:5.16.3-299.amzn2.0.2             amzn2-core        685 k 
+ perl-macros                        x86_64        4:5.16.3-299.amzn2.0.2             amzn2-core         45 k 
+
+Transaction Summary
+=============================================================================================================Install   6 Packages
+Upgrade  14 Packages
+
+Total download size: 63 M
+Is this ok [y/d/N]: y
+Downloading packages:
+Delta RPMs disabled because /usr/bin/applydeltarpm not installed.
+(1/20): cloud-init-19.3-46.amzn2.0.1.noarch.rpm                                       | 927 kB  00:00:00     
+(2/20): glib2-2.56.1-9.amzn2.0.3.x86_64.rpm                                           | 2.4 MB  00:00:00     
+(3/20): grub2-2.06-9.amzn2.0.3.x86_64.rpm                                             |  46 kB  00:00:00     
+(4/20): grub2-efi-x64-ec2-2.06-9.amzn2.0.3.x86_64.rpm                                 | 282 kB  00:00:00     
+(5/20): grub2-common-2.06-9.amzn2.0.3.noarch.rpm                                      | 1.8 MB  00:00:00     
+(6/20): grub2-pc-2.06-9.amzn2.0.3.x86_64.rpm                                          |  45 kB  00:00:00     
+(7/20): grub2-pc-modules-2.06-9.amzn2.0.3.noarch.rpm                                  | 938 kB  00:00:00     
+(8/20): grub2-tools-2.06-9.amzn2.0.3.x86_64.rpm                                       | 2.0 MB  00:00:00     
+(9/20): grub2-tools-efi-2.06-9.amzn2.0.3.x86_64.rpm                                   | 560 kB  00:00:00     
+(10/20): grub2-tools-extra-2.06-9.amzn2.0.3.x86_64.rpm                                | 1.0 MB  00:00:00     
+(11/20): grub2-tools-minimal-2.06-9.amzn2.0.3.x86_64.rpm                              | 624 kB  00:00:00     
+(12/20): java-1.8.0-openjdk-1.8.0.372.b07-1.amzn2.0.1.x86_64.rpm                      | 314 kB  00:00:00     
+(13/20): java-1.8.0-openjdk-devel-1.8.0.372.b07-1.amzn2.0.1.x86_64.rpm                | 9.8 MB  00:00:00     
+(14/20): libssh2-1.4.3-12.amzn2.2.4.x86_64.rpm                                        | 136 kB  00:00:00     
+(15/20): libwebp-0.3.0-10.amzn2.0.2.x86_64.rpm                                        | 170 kB  00:00:00     
+(16/20): perl-5.16.3-299.amzn2.0.2.x86_64.rpm                                         | 8.0 MB  00:00:00     
+(17/20): java-1.8.0-openjdk-headless-1.8.0.372.b07-1.amzn2.0.1.x86_64.rpm             |  33 MB  00:00:00     
+(18/20): perl-Pod-Escapes-1.04-299.amzn2.0.2.noarch.rpm                               |  52 kB  00:00:00     
+(19/20): perl-macros-5.16.3-299.amzn2.0.2.x86_64.rpm                                  |  45 kB  00:00:00     
+(20/20): perl-libs-5.16.3-299.amzn2.0.2.x86_64.rpm                                    | 685 kB  00:00:00     
+-------------------------------------------------------------------------------------------------------------Total                                                                         74 MB/s |  63 MB  00:00:00     
+Running transaction check
+Running transaction test
+Transaction test succeeded
+Running transaction
+  Updating   : 1:grub2-common-2.06-9.amzn2.0.3.noarch                                                   1/38 
+  Installing : 1:grub2-tools-minimal-2.06-9.amzn2.0.3.x86_64                                            2/38 
+  Updating   : 4:perl-libs-5.16.3-299.amzn2.0.2.x86_64                                                  3/38 
+  Updating   : 4:perl-macros-5.16.3-299.amzn2.0.2.x86_64                                                4/38 
+  Updating   : 4:perl-5.16.3-299.amzn2.0.2.x86_64                                                       5/38 
+  Installing : 1:grub2-tools-2.06-9.amzn2.0.3.x86_64                                                    6/38 
+  Updating   : 1:java-1.8.0-openjdk-headless-1.8.0.372.b07-1.amzn2.0.1.x86_64                           7/38 
+  Updating   : 1:java-1.8.0-openjdk-1.8.0.372.b07-1.amzn2.0.1.x86_64                                    8/38 
+  Updating   : 1:grub2-pc-modules-2.06-9.amzn2.0.3.noarch                                               9/38 
+  Installing : 1:grub2-pc-2.06-9.amzn2.0.3.x86_64                                                      10/38 
+  Installing : 1:grub2-2.06-9.amzn2.0.3.x86_64                                                         11/38 
+  Updating   : 1:java-1.8.0-openjdk-devel-1.8.0.372.b07-1.amzn2.0.1.x86_64                             12/38 
+  Updating   : 1:grub2-efi-x64-ec2-2.06-9.amzn2.0.3.x86_64                                             13/38 
+  Updating   : 1:perl-Pod-Escapes-1.04-299.amzn2.0.2.noarch                                            14/38 
+  Installing : 1:grub2-tools-extra-2.06-9.amzn2.0.3.x86_64                                             15/38 
+  Installing : 1:grub2-tools-efi-2.06-9.amzn2.0.3.x86_64                                               16/38 
+  Updating   : glib2-2.56.1-9.amzn2.0.3.x86_64                                                         17/38 
+  Updating   : cloud-init-19.3-46.amzn2.0.1.noarch                                                     18/38 
+  Updating   : libwebp-0.3.0-10.amzn2.0.2.x86_64                                                       19/38 
+  Updating   : libssh2-1.4.3-12.amzn2.2.4.x86_64                                                       20/38 
+  Cleanup    : 1:grub2-efi-x64-ec2-2.06-9.amzn2.0.1.x86_64                                             21/38 
+  Cleanup    : 1:java-1.8.0-openjdk-devel-1.8.0.362.b08-1.amzn2.0.1.x86_64                             22/38 
+  Cleanup    : 1:grub2-2.06-9.amzn2.0.1.x86_64                                                         23/38 
+  Cleanup    : 1:grub2-pc-2.06-9.amzn2.0.1.x86_64                                                      24/38 
+  Cleanup    : 1:grub2-pc-modules-2.06-9.amzn2.0.1.noarch                                              25/38 
+  Cleanup    : 1:perl-Pod-Escapes-1.04-299.amzn2.0.1.noarch                                            26/38 
+  Cleanup    : cloud-init-19.3-46.amzn2.noarch                                                         27/38 
+  Cleanup    : 4:perl-libs-5.16.3-299.amzn2.0.1.x86_64                                                 28/38 
+  Cleanup    : 4:perl-macros-5.16.3-299.amzn2.0.1.x86_64                                               29/38 
+  Cleanup    : 4:perl-5.16.3-299.amzn2.0.1.x86_64                                                      30/38 
+  Cleanup    : 1:grub2-tools-minimal-2.06-9.amzn2.0.1.x86_64                                           31/38 
+  Cleanup    : 1:grub2-tools-2.06-9.amzn2.0.1.x86_64                                                   32/38 
+  Cleanup    : 1:java-1.8.0-openjdk-1.8.0.362.b08-1.amzn2.0.1.x86_64                                   33/38 
+  Cleanup    : 1:grub2-common-2.06-9.amzn2.0.1.noarch                                                  34/38 
+  Cleanup    : 1:java-1.8.0-openjdk-headless-1.8.0.362.b08-1.amzn2.0.1.x86_64                          35/38 
+  Cleanup    : glib2-2.56.1-9.amzn2.0.2.x86_64                                                         36/38 
+  Cleanup    : libwebp-0.3.0-10.amzn2.0.1.x86_64                                                       37/38 
+  Cleanup    : libssh2-1.4.3-12.amzn2.2.3.x86_64                                                       38/38 
+  Verifying  : 1:java-1.8.0-openjdk-devel-1.8.0.372.b07-1.amzn2.0.1.x86_64                              1/38 
+  Verifying  : libssh2-1.4.3-12.amzn2.2.4.x86_64                                                        2/38 
+  Verifying  : 1:perl-Pod-Escapes-1.04-299.amzn2.0.2.noarch                                             3/38 
+  Verifying  : libwebp-0.3.0-10.amzn2.0.2.x86_64                                                        4/38 
+  Verifying  : 1:grub2-tools-extra-2.06-9.amzn2.0.3.x86_64                                              5/38 
+  Verifying  : 1:grub2-pc-modules-2.06-9.amzn2.0.3.noarch                                               6/38 
+  Verifying  : 1:grub2-tools-2.06-9.amzn2.0.3.x86_64                                                    7/38 
+  Verifying  : 1:grub2-efi-x64-ec2-2.06-9.amzn2.0.3.x86_64                                              8/38 
+  Verifying  : 1:grub2-tools-minimal-2.06-9.amzn2.0.3.x86_64                                            9/38 
+  Verifying  : 1:grub2-2.06-9.amzn2.0.3.x86_64                                                         10/38 
+  Verifying  : 4:perl-5.16.3-299.amzn2.0.2.x86_64                                                      11/38 
+  Verifying  : cloud-init-19.3-46.amzn2.0.1.noarch                                                     12/38 
+  Verifying  : 1:java-1.8.0-openjdk-1.8.0.372.b07-1.amzn2.0.1.x86_64                                   13/38 
+  Verifying  : 4:perl-libs-5.16.3-299.amzn2.0.2.x86_64                                                 14/38 
+  Verifying  : 4:perl-macros-5.16.3-299.amzn2.0.2.x86_64                                               15/38 
+  Verifying  : 1:grub2-common-2.06-9.amzn2.0.3.noarch                                                  16/38 
+  Verifying  : 1:grub2-pc-2.06-9.amzn2.0.3.x86_64                                                      17/38 
+  Verifying  : 1:grub2-tools-efi-2.06-9.amzn2.0.3.x86_64                                               18/38 
+  Verifying  : 1:java-1.8.0-openjdk-headless-1.8.0.372.b07-1.amzn2.0.1.x86_64                          19/38 
+  Verifying  : glib2-2.56.1-9.amzn2.0.3.x86_64                                                         20/38 
+  Verifying  : 1:grub2-pc-2.06-9.amzn2.0.1.x86_64                                                      21/38 
+  Verifying  : 4:perl-macros-5.16.3-299.amzn2.0.1.x86_64                                               22/38 
+  Verifying  : 1:grub2-tools-minimal-2.06-9.amzn2.0.1.x86_64                                           23/38 
+  Verifying  : 4:perl-libs-5.16.3-299.amzn2.0.1.x86_64                                                 24/38 
+  Verifying  : cloud-init-19.3-46.amzn2.noarch                                                         25/38 
+  Verifying  : libssh2-1.4.3-12.amzn2.2.3.x86_64                                                       26/38 
+  Verifying  : 1:grub2-pc-modules-2.06-9.amzn2.0.1.noarch                                              27/38 
+  Verifying  : 4:perl-5.16.3-299.amzn2.0.1.x86_64                                                      28/38 
+  Verifying  : 1:java-1.8.0-openjdk-headless-1.8.0.362.b08-1.amzn2.0.1.x86_64                          29/38 
+  Verifying  : 1:grub2-tools-2.06-9.amzn2.0.1.x86_64                                                   30/38 
+  Verifying  : 1:java-1.8.0-openjdk-1.8.0.362.b08-1.amzn2.0.1.x86_64                                   31/38 
+  Verifying  : 1:grub2-efi-x64-ec2-2.06-9.amzn2.0.1.x86_64                                             32/38 
+  Verifying  : glib2-2.56.1-9.amzn2.0.2.x86_64                                                         33/38 
+  Verifying  : 1:java-1.8.0-openjdk-devel-1.8.0.362.b08-1.amzn2.0.1.x86_64                             34/38 
+  Verifying  : libwebp-0.3.0-10.amzn2.0.1.x86_64                                                       35/38 
+  Verifying  : 1:grub2-2.06-9.amzn2.0.1.x86_64                                                         36/38 
+  Verifying  : 1:grub2-common-2.06-9.amzn2.0.1.noarch                                                  37/38 
+  Verifying  : 1:perl-Pod-Escapes-1.04-299.amzn2.0.1.noarch                                            38/38 
+
+Installed:
+  grub2.x86_64 1:2.06-9.amzn2.0.3                      grub2-pc.x86_64 1:2.06-9.amzn2.0.3
+  grub2-tools.x86_64 1:2.06-9.amzn2.0.3                grub2-tools-efi.x86_64 1:2.06-9.amzn2.0.3
+  grub2-tools-extra.x86_64 1:2.06-9.amzn2.0.3          grub2-tools-minimal.x86_64 1:2.06-9.amzn2.0.3
+
+Updated:
+  cloud-init.noarch 0:19.3-46.amzn2.0.1
+  glib2.x86_64 0:2.56.1-9.amzn2.0.3
+  grub2-common.noarch 1:2.06-9.amzn2.0.3
+  grub2-efi-x64-ec2.x86_64 1:2.06-9.amzn2.0.3
+  grub2-pc-modules.noarch 1:2.06-9.amzn2.0.3
+  java-1.8.0-openjdk.x86_64 1:1.8.0.372.b07-1.amzn2.0.1
+  java-1.8.0-openjdk-devel.x86_64 1:1.8.0.372.b07-1.amzn2.0.1
+  java-1.8.0-openjdk-headless.x86_64 1:1.8.0.372.b07-1.amzn2.0.1
+  libssh2.x86_64 0:1.4.3-12.amzn2.2.4
+  libwebp.x86_64 0:0.3.0-10.amzn2.0.2
+  perl.x86_64 4:5.16.3-299.amzn2.0.2
+  perl-Pod-Escapes.noarch 1:1.04-299.amzn2.0.2
+  perl-libs.x86_64 4:5.16.3-299.amzn2.0.2
+  perl-macros.x86_64 4:5.16.3-299.amzn2.0.2
+
+Replaced:
+  grub2.x86_64 1:2.06-9.amzn2.0.1                    grub2-tools.x86_64 1:2.06-9.amzn2.0.1
+
+Complete!
+[ec2-user@ip-10-0-1-26 ~]$ which httpd
+/usr/bin/which: no httpd in (/usr/local/bin:/usr/bin:/usr/local/sbin:/usr/sbin:/home/ec2-user/.local/bin:/home/ec2-user/bin)
+[ec2-user@ip-10-0-1-26 ~]$ which apache
+/usr/bin/which: no apache in (/usr/local/bin:/usr/bin:/usr/local/sbin:/usr/sbin:/home/ec2-user/.local/bin:/home/ec2-user/bin)
+[ec2-user@ip-10-0-1-26 ~]$ sudo yum install apache
+Loaded plugins: extras_suggestions, langpacks, priorities, update-motd
+No package apache available.
+Error: Nothing to do
+[ec2-user@ip-10-0-1-26 ~]$ which apache
+/usr/bin/which: no apache in (/usr/local/bin:/usr/bin:/usr/local/sbin:/usr/sbin:/home/ec2-user/.local/bin:/home/ec2-user/bin)
+[ec2-user@ip-10-0-1-26 ~]$ sudo yum install httpd
+Loaded plugins: extras_suggestions, langpacks, priorities, update-motd
+Resolving Dependencies
+--> Running transaction check
+---> Package httpd.x86_64 0:2.4.57-1.amzn2 will be installed
+--> Processing Dependency: httpd-tools = 2.4.57-1.amzn2 for package: httpd-2.4.57-1.amzn2.x86_64
+--> Processing Dependency: httpd-filesystem = 2.4.57-1.amzn2 for package: httpd-2.4.57-1.amzn2.x86_64
+--> Processing Dependency: system-logos-httpd for package: httpd-2.4.57-1.amzn2.x86_64
+--> Processing Dependency: mod_http2 for package: httpd-2.4.57-1.amzn2.x86_64
+--> Processing Dependency: httpd-filesystem for package: httpd-2.4.57-1.amzn2.x86_64
+--> Processing Dependency: /etc/mime.types for package: httpd-2.4.57-1.amzn2.x86_64
+--> Processing Dependency: libaprutil-1.so.0()(64bit) for package: httpd-2.4.57-1.amzn2.x86_64
+--> Processing Dependency: libapr-1.so.0()(64bit) for package: httpd-2.4.57-1.amzn2.x86_64
+--> Running transaction check
+---> Package apr.x86_64 0:1.7.2-1.amzn2 will be installed
+---> Package apr-util.x86_64 0:1.6.3-1.amzn2.0.1 will be installed
+--> Processing Dependency: apr-util-bdb(x86-64) = 1.6.3-1.amzn2.0.1 for package: apr-util-1.6.3-1.amzn2.0.1.x86_64
+---> Package generic-logos-httpd.noarch 0:18.0.0-4.amzn2 will be installed
+---> Package httpd-filesystem.noarch 0:2.4.57-1.amzn2 will be installed
+---> Package httpd-tools.x86_64 0:2.4.57-1.amzn2 will be installed
+---> Package mailcap.noarch 0:2.1.41-2.amzn2 will be installed
+---> Package mod_http2.x86_64 0:1.15.19-1.amzn2.0.1 will be installed
+--> Running transaction check
+---> Package apr-util-bdb.x86_64 0:1.6.3-1.amzn2.0.1 will be installed
+--> Finished Dependency Resolution
+
+Dependencies Resolved
+
+============================================================================================================= Package                        Arch              Version                        Repository             Size 
+=============================================================================================================Installing:
+ httpd                          x86_64            2.4.57-1.amzn2                 amzn2-core            1.4 M 
+Installing for dependencies:
+ apr                            x86_64            1.7.2-1.amzn2                  amzn2-core            130 k 
+ apr-util                       x86_64            1.6.3-1.amzn2.0.1              amzn2-core            101 k 
+ apr-util-bdb                   x86_64            1.6.3-1.amzn2.0.1              amzn2-core             22 k 
+ generic-logos-httpd            noarch            18.0.0-4.amzn2                 amzn2-core             19 k 
+ httpd-filesystem               noarch            2.4.57-1.amzn2                 amzn2-core             24 k 
+ httpd-tools                    x86_64            2.4.57-1.amzn2                 amzn2-core             88 k 
+ mailcap                        noarch            2.1.41-2.amzn2                 amzn2-core             31 k 
+ mod_http2                      x86_64            1.15.19-1.amzn2.0.1            amzn2-core            149 k 
+
+Transaction Summary
+=============================================================================================================Install  1 Package (+8 Dependent packages)
+
+Total download size: 1.9 M
+Installed size: 5.2 M
+Is this ok [y/d/N]: y
+Downloading packages:
+(1/9): apr-1.7.2-1.amzn2.x86_64.rpm                                                   | 130 kB  00:00:00     
+(2/9): apr-util-1.6.3-1.amzn2.0.1.x86_64.rpm                                          | 101 kB  00:00:00     
+(3/9): apr-util-bdb-1.6.3-1.amzn2.0.1.x86_64.rpm                                      |  22 kB  00:00:00     
+(4/9): generic-logos-httpd-18.0.0-4.amzn2.noarch.rpm                                  |  19 kB  00:00:00     
+(5/9): httpd-2.4.57-1.amzn2.x86_64.rpm                                                | 1.4 MB  00:00:00     
+(6/9): httpd-filesystem-2.4.57-1.amzn2.noarch.rpm                                     |  24 kB  00:00:00     
+(7/9): httpd-tools-2.4.57-1.amzn2.x86_64.rpm                                          |  88 kB  00:00:00     
+(8/9): mailcap-2.1.41-2.amzn2.noarch.rpm                                              |  31 kB  00:00:00     
+(9/9): mod_http2-1.15.19-1.amzn2.0.1.x86_64.rpm                                       | 149 kB  00:00:00     
+-------------------------------------------------------------------------------------------------------------Total                                                                        8.9 MB/s | 1.9 MB  00:00:00     
+Running transaction check
+Running transaction test
+Transaction test succeeded
+Running transaction
+  Installing : apr-1.7.2-1.amzn2.x86_64                                                                  1/9 
+  Installing : apr-util-1.6.3-1.amzn2.0.1.x86_64                                                         2/9 
+  Installing : apr-util-bdb-1.6.3-1.amzn2.0.1.x86_64                                                     3/9 
+  Installing : httpd-tools-2.4.57-1.amzn2.x86_64                                                         4/9 
+  Installing : httpd-filesystem-2.4.57-1.amzn2.noarch                                                    5/9 
+  Installing : generic-logos-httpd-18.0.0-4.amzn2.noarch                                                 6/9 
+  Installing : mailcap-2.1.41-2.amzn2.noarch                                                             7/9 
+  Installing : mod_http2-1.15.19-1.amzn2.0.1.x86_64                                                      8/9 
+  Installing : httpd-2.4.57-1.amzn2.x86_64                                                               9/9 
+  Verifying  : apr-util-bdb-1.6.3-1.amzn2.0.1.x86_64                                                     1/9 
+  Verifying  : apr-1.7.2-1.amzn2.x86_64                                                                  2/9 
+  Verifying  : httpd-tools-2.4.57-1.amzn2.x86_64                                                         3/9 
+  Verifying  : apr-util-1.6.3-1.amzn2.0.1.x86_64                                                         4/9 
+  Verifying  : mailcap-2.1.41-2.amzn2.noarch                                                             5/9 
+  Verifying  : generic-logos-httpd-18.0.0-4.amzn2.noarch                                                 6/9 
+  Verifying  : mod_http2-1.15.19-1.amzn2.0.1.x86_64                                                      7/9 
+  Verifying  : httpd-2.4.57-1.amzn2.x86_64                                                               8/9 
+  Verifying  : httpd-filesystem-2.4.57-1.amzn2.noarch                                                    9/9 
+
+Installed:
+  httpd.x86_64 0:2.4.57-1.amzn2
+
+Dependency Installed:
+  apr.x86_64 0:1.7.2-1.amzn2                          apr-util.x86_64 0:1.6.3-1.amzn2.0.1
+  apr-util-bdb.x86_64 0:1.6.3-1.amzn2.0.1             generic-logos-httpd.noarch 0:18.0.0-4.amzn2
+  httpd-filesystem.noarch 0:2.4.57-1.amzn2            httpd-tools.x86_64 0:2.4.57-1.amzn2
+  mailcap.noarch 0:2.1.41-2.amzn2                     mod_http2.x86_64 0:1.15.19-1.amzn2.0.1
+
+Complete!
+[ec2-user@ip-10-0-1-26 ~]$ which httpd
+/usr/sbin/httpd
+          </code>
+        </pre>
+      </div>
+      <div id="bottom-panel">
+        <pre>
+          <code>
+            $
+          </code>
+        </pre>
+      </div>
+    </div>
+  </div>
+</body>
+</html>
