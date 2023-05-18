@@ -44,6 +44,3 @@ To use this pipeline project, you'll need the following:
 
 4. Once the pipeline completes successfully, the updated website will be deployed to the Apache server and accessible on the web.
 
-## License
-
-This project is licensed under the [MIT License](LICENSE).
