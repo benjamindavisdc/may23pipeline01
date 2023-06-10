@@ -2,14 +2,10 @@
 <html lang="en">
 
 <head>
-  <script src="assets/js/prism.js"></script>
-  <link href="assets/css/prism.css" rel="stylesheet" />
-
-
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-  <title>Ben Davis DevOps Projects</title>
+  <title>Butterfly Bootstrap Template - Index</title>
   <meta content="" name="description">
   <meta content="" name="keywords">
 
@@ -40,45 +36,46 @@
 </head>
 
 <body>
-<!-- ======= Header ======= -->
-<header id="header" class="fixed-top">
-  <div class="container d-flex align-items-center justify-content-between">
 
-    <a href="index.html" class="logo"><img src="assets/img/logo.png" alt="" class="img-fluid"></a>
-    <!-- Uncomment below if you prefer to use text as a logo -->
-    <!-- <h1 class="logo"><a href="index.html">Butterfly</a></h1> -->
+  <!-- ======= Header ======= -->
+  <header id="header" class="fixed-top">
+    <div class="container d-flex align-items-center justify-content-between">
 
-    <nav id="navbar" class="navbar">
-      <ul>
-        <li><a class="nav-link scrollto " href="#hero">Home</a></li>
-        <li><a class="nav-link scrollto" href="#about">About</a></li>
-        <li><a class="nav-link scrollto" href="#services">Services</a></li>
-        <li><a class="nav-link scrollto active" href="#portfolio">Portfolio</a></li>
-        <li><a class="nav-link scrollto" href="#team">Team</a></li>
-        <li class="dropdown"><a href="#"><span>Drop Down</span> <i class="bi bi-chevron-down"></i></a>
-          <ul>
-            <li><a href="#">Drop Down 1</a></li>
-            <li class="dropdown"><a href="#"><span>Deep Drop Down</span> <i class="bi bi-chevron-right"></i></a>
-              <ul>
-                <li><a href="/pipeline1.html">Pipeline1</a></li>
-                <li><a href="/inner-page.html">inner-page</a></li>
-                <li><a href="#">Deep Drop Down 3</a></li>
-                <li><a href="#">Deep Drop Down 4</a></li>
-                <li><a href="#">Deep Drop Down 5</a></li>
-              </ul>
-            </li>
-            <li><a href="/pipeline1.html">Pipeline1</a></li>
-            <li><a href="/inner-page.html">inner-page</a></li>
-            <li><a href="#">Drop Down 4</a></li>
-          </ul>
-        </li>
-        <li><a class="nav-link scrollto" href="#contact">Contact</a></li>
-      </ul>
-      <i class="bi bi-list mobile-nav-toggle"></i>
-    </nav><!-- .navbar -->
+      <a href="index.html" class="logo"><img src="assets/img/logo.png" alt="" class="img-fluid"></a>
+      <!-- Uncomment below if you prefer to use text as a logo -->
+      <!-- <h1 class="logo"><a href="index.html">Butterfly</a></h1> -->
 
-  </div>
-</header><!-- End Header -->
+      <nav id="navbar" class="navbar">
+        <ul>
+          <li><a class="nav-link scrollto active" href="#hero">Home</a></li>
+          <li><a class="nav-link scrollto" href="#about">About</a></li>
+          <li><a class="nav-link scrollto" href="#services">Services</a></li>
+          <li><a class="nav-link scrollto " href="#portfolio">Portfolio</a></li>
+          <li><a class="nav-link scrollto" href="#team">Team</a></li>
+          <li class="dropdown"><a href="#"><span>Drop Down</span> <i class="bi bi-chevron-down"></i></a>
+            <ul>
+              <li><a href="#">Drop Down 1</a></li>
+              <li class="dropdown"><a href="#"><span>Deep Drop Down</span> <i class="bi bi-chevron-right"></i></a>
+                <ul>
+                  <li><a href="#">Deep Drop Down 1</a></li>
+                  <li><a href="#">Deep Drop Down 2</a></li>
+                  <li><a href="#">Deep Drop Down 3</a></li>
+                  <li><a href="#">Deep Drop Down 4</a></li>
+                  <li><a href="#">Deep Drop Down 5</a></li>
+                </ul>
+              </li>
+              <li><a href="#">Drop Down 2</a></li>
+              <li><a href="#">Drop Down 3</a></li>
+              <li><a href="#">Drop Down 4</a></li>
+            </ul>
+          </li>
+          <li><a class="nav-link scrollto" href="#contact">Contact</a></li>
+        </ul>
+        <i class="bi bi-list mobile-nav-toggle"></i>
+      </nav><!-- .navbar -->
+
+    </div>
+  </header><!-- End Header -->
 
   <!-- ======= Hero Section ======= -->
   <section id="hero" class="d-flex align-items-center">
@@ -99,104 +96,79 @@
   </section><!-- End Hero -->
 
   <main id="main">
-<!-- ======= About Section 1 ======= -->
-<section id="about" class="about">
-  <div class="container">
 
-    <div class="row">
-      <div class="col-xl-6 col-lg-6 d-flex justify-content-center align-items-stretch position-relative">
-      <div class="code-container">
-        <div class="code-banner">X-ray</div>
-        <pre>
-          <code class="language-python">
-import requests
-import base64
-import boto3
-            
-def lambda_handler(event, context):
-    # Scrape the webpage
-    url = "https://api.github.com/repos/*"
-    response = requests.get(url)
-                
-    if response.status_code == 200:
-        page_text = response.json()["content"]
-        decoded_bytes = base64.b64decode(page_text)
-        scraped_text = decoded_bytes.decode(errors='replace')
-            
-        print("Scraped webpage text:")
-        print(scraped_text)
-                    
-        # Put the scraped text into DynamoDB
-        dynamodb = boto3.resource('dynamodb', region_name='us-east-1')
-        table = dynamodb.Table('x-ray_table')
-            
-        response = table.put_item(
-            Item={
-                'file_path': url,
-                'file_content': scraped_text
-            }
-        )
-            
-        return {
-            'statusCode': 200,
-            'body': 'Item added successfully to DynamoDB table.'
-        }
-    else:
-        return {
-            'statusCode': response.status_code,
-            'body': 'Failed to scrape webpage.'
-        }</code>
-        </pre>
-      </div>  
-      </div>
+    <!-- ======= About Section ======= -->
+    <section id="about" class="about">
+      <div class="container">
 
-      <div class="col-xl-6 col-lg-6 icon-boxes d-flex flex-column align-items-stretch justify-content-center py-6 px-lg-6">
-        <h3>'X-ray App'</h3>
+        <div class="row">
+          <div class="col-xl-5 col-lg-6 d-flex justify-content-center video-box align-items-stretch position-relative">
+            <a href="https://www.youtube.com/watch?v=jDDaplaOz7Q" class="glightbox play-btn mb-4"></a>
+          </div>
 
-        <div class="icon-box">
-          <div class="icon"><i class="bx bx-atom"></i></div>
-          <h4 class="title"><a href="">Dynamic Content</a></h4>
-          <p class="description">Using Pthon and DynamoDB, we can deliver dynamic content to our front end, keeping us up to date on all infrastructure changes.</p>
+          <div class="col-xl-7 col-lg-6 icon-boxes d-flex flex-column align-items-stretch justify-content-center py-5 px-lg-5">
+            <h3>Enim quis est voluptatibus aliquid consequatur fugiat</h3>
+            <p>Esse voluptas cumque vel exercitationem. Reiciendis est hic accusamus. Non ipsam et sed minima temporibus laudantium. Soluta voluptate sed facere corporis dolores excepturi. Libero laboriosam sint et id nulla tenetur. Suscipit aut voluptate.</p>
+
+            <div class="icon-box">
+              <div class="icon"><i class="bx bx-fingerprint"></i></div>
+              <h4 class="title"><a href="">Lorem Ipsum</a></h4>
+              <p class="description">Voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident</p>
+            </div>
+
+            <div class="icon-box">
+              <div class="icon"><i class="bx bx-gift"></i></div>
+              <h4 class="title"><a href="">Nemo Enim</a></h4>
+              <p class="description">At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque</p>
+            </div>
+
+            <div class="icon-box">
+              <div class="icon"><i class="bx bx-atom"></i></div>
+              <h4 class="title"><a href="">Dine Pad</a></h4>
+              <p class="description">Explicabo est voluptatum asperiores consequatur magnam. Et veritatis odit. Sunt aut deserunt minus aut eligendi omnis</p>
+            </div>
+
+          </div>
         </div>
 
+      </div>
+    </section><!-- End About Section -->
 
-        <p>The X-ray app is an exciting project I developed to showcase my DevOps skills in infrastructure deployment. As a seasoned professional in this field, I realized that traditional portfolio websites were limited in demonstrating the backend aspects of my work. So, I set out to create a solution that allows visitors to delve into my infrastructure code and gain a deeper understanding of my expertise.
-        </p>
+    <!-- ======= Counts Section ======= -->
+    <section id="counts" class="counts">
+      <div class="container">
 
-        <p>My primary motivation behind building the X-ray app was to address the need for a platform that highlights the most recent versions of my infrastructure files. With this app, I wanted to ensure that potential employers or clients can explore my code and stay updated on the latest developments in my projects. By dynamically pulling the code directly from my repositories, I eliminate the hassle of manually updating snippets and ensure that viewers always have access to the most up-to-date information.</p>
+        <div class="text-center title">
+          <h3>What we have achieved so far</h3>
+          <p>Iusto et labore modi qui sapiente xpedita tempora et aut non ipsum consequatur illo.</p>
+        </div>
 
-        
+        <div class="row counters position-relative">
+
+          <div class="col-lg-3 col-6 text-center">
+            <span data-purecounter-start="0" data-purecounter-end="232" data-purecounter-duration="1" class="purecounter"></span>
+            <p>Clients</p>
+          </div>
+
+          <div class="col-lg-3 col-6 text-center">
+            <span data-purecounter-start="0" data-purecounter-end="521" data-purecounter-duration="1" class="purecounter"></span>
+            <p>Projects</p>
+          </div>
+
+          <div class="col-lg-3 col-6 text-center">
+            <span data-purecounter-start="0" data-purecounter-end="1463" data-purecounter-duration="1" class="purecounter"></span>
+            <p>Hours Of Support</p>
+          </div>
+
+          <div class="col-lg-3 col-6 text-center">
+            <span data-purecounter-start="0" data-purecounter-end="15" data-purecounter-duration="1" class="purecounter"></span>
+            <p>Hard Workers</p>
+          </div>
+
+        </div>
 
       </div>
-    </div>
-
-  </div>
-</section><!-- End About Section -->
-
-<!-- ======= About Section 2 ======= -->
-<section id="about" class="about">
-  <div class="container">
-
-    <div class="row">
-      <div class="col-xl-7 col-lg-6 icon-boxes d-flex flex-column align-items-stretch justify-content-center py-5 px-lg-5">
-        <h3>DevOps</h3>
-        <p>Another critical aspect I wanted to address with the X-ray app was the ability to iterate rapidly on new changes to my infrastructure. I found it cumbersome and time-consuming to manually update code snippets on my portfolio website whenever I made updates to my projects. To overcome this hurdle, the X-ray app leverages automation to retrieve the latest code from my repositories. This way, I can focus on refining and improving my infrastructure without worrying about keeping the website in sync.</p>
-
-          <p>Embracing Agility
-          By building the X-ray app, I've created a platform that aligns with my development philosophy of embracing agility. It allows me to showcase my backend scripts, like Dockerfiles and Jenkinsfiles, in an organized manner, enabling visitors to navigate and understand my deployment processes effortlessly. The app provides an interactive and user-friendly experience, giving viewers a glimpse into the inner workings of my projects.</p>
-          
-          <p>In summary, the X-ray app is my solution for showcasing my DevOps skills in infrastructure deployment. It ensures that viewers have access to the most recent versions of my infrastructure files, while also enabling me to iterate rapidly on new changes. By offering this transparency into my work, I aim to provide potential employers and clients with a comprehensive understanding of my expertise and commitment to delivering robust and scalable infrastructure solutions.</p>
-      </div>
-
-      <div class="col-xl-5 col-lg-6 d-flex justify-content-center align-items-stretch position-relative">
-        <img src="https://www.expresssewer.com/hubfs/different%20types%20of%20plumbing%20pipes.jpeg" height="400" width="700" class="img-fluid" alt="Pipes Image">
-      </div>
-    </div>
-
-  </div>
-</section><!-- End About Section -->
-
-    
+    </section><!-- End Counts Section -->
 
     <!-- ======= Clients Section ======= -->
     <section id="clients" class="clients">
@@ -321,7 +293,7 @@ def lambda_handler(event, context):
       <div class="container">
 
         <div class="section-title">
-          <h2>Pipelines</h2>
+          <h2>Portfolio</h2>
           <p>Magnam dolores commodi suscipit. Necessitatibus eius consequatur ex aliquid fuga eum quidem. Sit sint consectetur velit. Quisquam quos quisquam cupiditate. Et nemo qui impedit suscipit alias ea. Quia fugiat sit in iste officiis commodi quidem hic quas.</p>
         </div>
 
@@ -329,9 +301,9 @@ def lambda_handler(event, context):
           <div class="col-lg-12 d-flex justify-content-center">
             <ul id="portfolio-flters">
               <li data-filter="*" class="filter-active">All</li>
-              <li data-filter=".filter-app">Compute</li>
-              <li data-filter=".filter-card">Storage</li>
-              <li data-filter=".filter-web">Deployment</li>
+              <li data-filter=".filter-app">App</li>
+              <li data-filter=".filter-card">Card</li>
+              <li data-filter=".filter-web">Web</li>
             </ul>
           </div>
         </div>
@@ -469,66 +441,395 @@ def lambda_handler(event, context):
       </div>
     </section><!-- End Portfolio Section -->
 
-    
-<!-- ======= Team Section ======= -->
-<section id="team" class="team section-bg">
-  <div class="container">
+    <!-- ======= Testimonials Section ======= -->
+    <section id="testimonials" class="testimonials">
+      <div class="container position-relative">
 
-    <div class="section-title">
-      <h2>Team</h2>
-      <p>Magnam dolores commodi suscipit. Necessitatibus eius consequatur ex aliquid fuga eum quidem. Sit sint consectetur velit. Quisquam quos quisquam cupiditate. Et nemo qui impedit suscipit alias ea. Quia fugiat sit in iste officiis commodi quidem hic quas.</p>
-    </div>
+        <div class="testimonials-slider swiper" data-aos="fade-up" data-aos-delay="100">
+          <div class="swiper-wrapper">
 
-    <div class="row">
+            <div class="swiper-slide">
+              <div class="testimonial-item">
+                <img src="assets/img/testimonials/testimonials-1.jpg" class="testimonial-img" alt="">
+                <h3>Saul Goodman</h3>
+                <h4>Ceo &amp; Founder</h4>
+                <p>
+                  <i class="bx bxs-quote-alt-left quote-icon-left"></i>
+                  Proin iaculis purus consequat sem cure digni ssim donec porttitora entum suscipit rhoncus. Accusantium quam, ultricies eget id, aliquam eget nibh et. Maecen aliquam, risus at semper.
+                  <i class="bx bxs-quote-alt-right quote-icon-right"></i>
+                </p>
+              </div>
+            </div><!-- End testimonial item -->
 
-      <div class="col-lg-6 d-flex align-items-stretch">
-        <div class="member">
-          <div class="member-img">
-            <img src="assets/img/team/team-1.jpg" class="img-fluid" alt="">
-            <div class="social">
-              <a href=""><i class="bi bi-twitter"></i></a>
-              <a href=""><i class="bi bi-facebook"></i></a>
-              <a href=""><i class="bi bi-instagram"></i></a>
-              <a href=""><i class="bi bi-linkedin"></i></a>
+            <div class="swiper-slide">
+              <div class="testimonial-item">
+                <img src="assets/img/testimonials/testimonials-2.jpg" class="testimonial-img" alt="">
+                <h3>Sara Wilsson</h3>
+                <h4>Designer</h4>
+                <p>
+                  <i class="bx bxs-quote-alt-left quote-icon-left"></i>
+                  Export tempor illum tamen malis malis eram quae irure esse labore quem cillum quid cillum eram malis quorum velit fore eram velit sunt aliqua noster fugiat irure amet legam anim culpa.
+                  <i class="bx bxs-quote-alt-right quote-icon-right"></i>
+                </p>
+              </div>
+            </div><!-- End testimonial item -->
+
+            <div class="swiper-slide">
+              <div class="testimonial-item">
+                <img src="assets/img/testimonials/testimonials-3.jpg" class="testimonial-img" alt="">
+                <h3>Jena Karlis</h3>
+                <h4>Store Owner</h4>
+                <p>
+                  <i class="bx bxs-quote-alt-left quote-icon-left"></i>
+                  Enim nisi quem export duis labore cillum quae magna enim sint quorum nulla quem veniam duis minim tempor labore quem eram duis noster aute amet eram fore quis sint minim.
+                  <i class="bx bxs-quote-alt-right quote-icon-right"></i>
+                </p>
+              </div>
+            </div><!-- End testimonial item -->
+
+            <div class="swiper-slide">
+              <div class="testimonial-item">
+                <img src="assets/img/testimonials/testimonials-4.jpg" class="testimonial-img" alt="">
+                <h3>Matt Brandon</h3>
+                <h4>Freelancer</h4>
+                <p>
+                  <i class="bx bxs-quote-alt-left quote-icon-left"></i>
+                  Fugiat enim eram quae cillum dolore dolor amet nulla culpa multos export minim fugiat minim velit minim dolor enim duis veniam ipsum anim magna sunt elit fore quem dolore labore illum veniam.
+                  <i class="bx bxs-quote-alt-right quote-icon-right"></i>
+                </p>
+              </div>
+            </div><!-- End testimonial item -->
+
+            <div class="swiper-slide">
+              <div class="testimonial-item">
+                <img src="assets/img/testimonials/testimonials-5.jpg" class="testimonial-img" alt="">
+                <h3>John Larson</h3>
+                <h4>Entrepreneur</h4>
+                <p>
+                  <i class="bx bxs-quote-alt-left quote-icon-left"></i>
+                  Quis quorum aliqua sint quem legam fore sunt eram irure aliqua veniam tempor noster veniam enim culpa labore duis sunt culpa nulla illum cillum fugiat legam esse veniam culpa fore nisi cillum quid.
+                  <i class="bx bxs-quote-alt-right quote-icon-right"></i>
+                </p>
+              </div>
+            </div><!-- End testimonial item -->
+
+          </div>
+          <div class="swiper-pagination"></div>
+        </div>
+
+      </div>
+    </section><!-- End Testimonials Section -->
+
+    <!-- ======= Team Section ======= -->
+    <section id="team" class="team section-bg">
+      <div class="container">
+
+        <div class="section-title">
+          <h2>Team</h2>
+          <p>Magnam dolores commodi suscipit. Necessitatibus eius consequatur ex aliquid fuga eum quidem. Sit sint consectetur velit. Quisquam quos quisquam cupiditate. Et nemo qui impedit suscipit alias ea. Quia fugiat sit in iste officiis commodi quidem hic quas.</p>
+        </div>
+
+        <div class="row">
+
+          <div class="col-lg-3 col-md-6 d-flex align-items-stretch">
+            <div class="member">
+              <div class="member-img">
+                <img src="assets/img/team/team-1.jpg" class="img-fluid" alt="">
+                <div class="social">
+                  <a href=""><i class="bi bi-twitter"></i></a>
+                  <a href=""><i class="bi bi-facebook"></i></a>
+                  <a href=""><i class="bi bi-instagram"></i></a>
+                  <a href=""><i class="bi bi-linkedin"></i></a>
+                </div>
+              </div>
+              <div class="member-info">
+                <h4>Walter White</h4>
+                <span>Chief Executive Officer</span>
+              </div>
             </div>
           </div>
-          <div class="member-info">
-            <h4>Walter White</h4>
-            <span>Chief Executive Officer</span>
+
+          <div class="col-lg-3 col-md-6 d-flex align-items-stretch">
+            <div class="member">
+              <div class="member-img">
+                <img src="assets/img/team/team-2.jpg" class="img-fluid" alt="">
+                <div class="social">
+                  <a href=""><i class="bi bi-twitter"></i></a>
+                  <a href=""><i class="bi bi-facebook"></i></a>
+                  <a href=""><i class="bi bi-instagram"></i></a>
+                  <a href=""><i class="bi bi-linkedin"></i></a>
+                </div>
+              </div>
+              <div class="member-info">
+                <h4>Sarah Jhonson</h4>
+                <span>Product Manager</span>
+              </div>
+            </div>
           </div>
+
+          <div class="col-lg-3 col-md-6 d-flex align-items-stretch">
+            <div class="member">
+              <div class="member-img">
+                <img src="assets/img/team/team-3.jpg" class="img-fluid" alt="">
+                <div class="social">
+                  <a href=""><i class="bi bi-twitter"></i></a>
+                  <a href=""><i class="bi bi-facebook"></i></a>
+                  <a href=""><i class="bi bi-instagram"></i></a>
+                  <a href=""><i class="bi bi-linkedin"></i></a>
+                </div>
+              </div>
+              <div class="member-info">
+                <h4>William Anderson</h4>
+                <span>CTO</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-lg-3 col-md-6 d-flex align-items-stretch">
+            <div class="member">
+              <div class="member-img">
+                <img src="assets/img/team/team-4.jpg" class="img-fluid" alt="">
+                <div class="social">
+                  <a href=""><i class="bi bi-twitter"></i></a>
+                  <a href=""><i class="bi bi-facebook"></i></a>
+                  <a href=""><i class="bi bi-instagram"></i></a>
+                  <a href=""><i class="bi bi-linkedin"></i></a>
+                </div>
+              </div>
+              <div class="member-info">
+                <h4>Amanda Jepson</h4>
+                <span>Accountant</span>
+              </div>
+            </div>
+          </div>
+
         </div>
+
       </div>
+    </section><!-- End Team Section -->
 
-      <div class="col-lg-6 d-flex align-items-stretch">
-        <div class="info">
-          <div class="address">
-            <i class="bi bi-geo-alt"></i>
-            <h4>Location:</h4>
-            <p>A108 Adam Street, New York, NY 535022</p>
-          </div>
+    <!-- ======= Gallery Section ======= -->
+    <section id="gallery" class="gallery">
+      <div class="container">
 
-          <div class="email">
-            <i class="bi bi-envelope"></i>
-            <h4>Email:</h4>
-            <p>info@example.com</p>
-          </div>
-
-          <div class="phone">
-            <i class="bi bi-phone"></i>
-            <h4>Call:</h4>
-            <p>972 310 8939</p>
-          </div>
+        <div class="section-title">
+          <h2>Gallery</h2>
+          <p>Magnam dolores commodi suscipit. Necessitatibus eius consequatur ex aliquid fuga eum quidem. Sit sint consectetur velit. Quisquam quos quisquam cupiditate. Et nemo qui impedit suscipit alias ea. Quia fugiat sit in iste officiis commodi quidem hic quas.</p>
         </div>
+
+        <div class="row no-gutters">
+
+          <div class="col-lg-3 col-md-4">
+            <div class="gallery-item">
+              <a href="assets/img/gallery/gallery-1.jpg" class="galleery-lightbox" data-gallery="gallery-item">
+                <img src="assets/img/gallery/gallery-1.jpg" alt="" class="img-fluid">
+              </a>
+            </div>
+          </div>
+
+          <div class="col-lg-3 col-md-4">
+            <div class="gallery-item">
+              <a href="assets/img/gallery/gallery-2.jpg" class="galleery-lightbox" data-gallery="gallery-item">
+                <img src="assets/img/gallery/gallery-2.jpg" alt="" class="img-fluid">
+              </a>
+            </div>
+          </div>
+
+          <div class="col-lg-3 col-md-4">
+            <div class="gallery-item">
+              <a href="assets/img/gallery/gallery-3.jpg" class="galleery-lightbox" data-gallery="gallery-item">
+                <img src="assets/img/gallery/gallery-3.jpg" alt="" class="img-fluid">
+              </a>
+            </div>
+          </div>
+
+          <div class="col-lg-3 col-md-4">
+            <div class="gallery-item">
+              <a href="assets/img/gallery/gallery-4.jpg" class="galleery-lightbox" data-gallery="gallery-item">
+                <img src="assets/img/gallery/gallery-4.jpg" alt="" class="img-fluid">
+              </a>
+            </div>
+          </div>
+
+          <div class="col-lg-3 col-md-4">
+            <div class="gallery-item">
+              <a href="assets/img/gallery/gallery-5.jpg" class="galleery-lightbox" data-gallery="gallery-item">
+                <img src="assets/img/gallery/gallery-5.jpg" alt="" class="img-fluid">
+              </a>
+            </div>
+          </div>
+
+          <div class="col-lg-3 col-md-4">
+            <div class="gallery-item">
+              <a href="assets/img/gallery/gallery-6.jpg" class="galleery-lightbox" data-gallery="gallery-item">
+                <img src="assets/img/gallery/gallery-6.jpg" alt="" class="img-fluid">
+              </a>
+            </div>
+          </div>
+
+          <div class="col-lg-3 col-md-4">
+            <div class="gallery-item">
+              <a href="assets/img/gallery/gallery-7.jpg" class="galleery-lightbox" data-gallery="gallery-item">
+                <img src="assets/img/gallery/gallery-7.jpg" alt="" class="img-fluid">
+              </a>
+            </div>
+          </div>
+
+          <div class="col-lg-3 col-md-4">
+            <div class="gallery-item">
+              <a href="assets/img/gallery/gallery-8.jpg" class="galleery-lightbox" data-gallery="gallery-item">
+                <img src="assets/img/gallery/gallery-8.jpg" alt="" class="img-fluid">
+              </a>
+            </div>
+          </div>
+
+        </div>
+
       </div>
+    </section><!-- End Gallery Section -->
 
-    </div>
+    <!-- ======= Contact Section ======= -->
+    <section id="contact" class="contact">
+      <div class="container">
 
-  </div>
-</section><!-- End Team Section -->
+        <div class="section-title">
+          <h2>Contact</h2>
+          <p>Magnam dolores commodi suscipit. Necessitatibus eius consequatur ex aliquid fuga eum quidem. Sit sint consectetur velit. Quisquam quos quisquam cupiditate. Et nemo qui impedit suscipit alias ea. Quia fugiat sit in iste officiis commodi quidem hic quas.</p>
+        </div>
+
+        <div>
+          <iframe style="border:0; width: 100%; height: 270px;" src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d12097.433213460943!2d-74.0062269!3d40.7101282!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0xb89d1fe6bc499443!2sDowntown+Conference+Center!5e0!3m2!1smk!2sbg!4v1539943755621" frameborder="0" allowfullscreen></iframe>
+        </div>
+
+        <div class="row mt-5">
+
+          <div class="col-lg-4">
+            <div class="info">
+              <div class="address">
+                <i class="bi bi-geo-alt"></i>
+                <h4>Location:</h4>
+                <p>A108 Adam Street, New York, NY 535022</p>
+              </div>
+
+              <div class="email">
+                <i class="bi bi-envelope"></i>
+                <h4>Email:</h4>
+                <p>info@example.com</p>
+              </div>
+
+              <div class="phone">
+                <i class="bi bi-phone"></i>
+                <h4>Call:</h4>
+                <p>+1 5589 55488 55s</p>
+              </div>
+
+            </div>
+
+          </div>
+
+          <div class="col-lg-8 mt-5 mt-lg-0">
+
+            <form action="forms/contact.php" method="post" role="form" class="php-email-form">
+              <div class="row">
+                <div class="col-md-6 form-group">
+                  <input type="text" name="name" class="form-control" id="name" placeholder="Your Name" required>
+                </div>
+                <div class="col-md-6 form-group mt-3 mt-md-0">
+                  <input type="email" class="form-control" name="email" id="email" placeholder="Your Email" required>
+                </div>
+              </div>
+              <div class="form-group mt-3">
+                <input type="text" class="form-control" name="subject" id="subject" placeholder="Subject" required>
+              </div>
+              <div class="form-group mt-3">
+                <textarea class="form-control" name="message" rows="5" placeholder="Message" required></textarea>
+              </div>
+              <div class="my-3">
+                <div class="loading">Loading</div>
+                <div class="error-message"></div>
+                <div class="sent-message">Your message has been sent. Thank you!</div>
+              </div>
+              <div class="text-center"><button type="submit">Send Message</button></div>
+            </form>
+
+          </div>
+
+        </div>
+
+      </div>
+    </section><!-- End Contact Section -->
 
   </main><!-- End #main -->
 
-  
+  <!-- ======= Footer ======= -->
+  <footer id="footer">
+
+    <div class="footer-newsletter">
+      <div class="container">
+        <div class="row justify-content-center">
+          <div class="col-lg-6">
+            <h4>Join Our Newsletter</h4>
+            <p>Tamen quem nulla quae legam multos aute sint culpa legam noster magna</p>
+            <form action="" method="post">
+              <input type="email" name="email"><input type="submit" value="Subscribe">
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="footer-top">
+      <div class="container">
+        <div class="row">
+
+          <div class="col-lg-3 col-md-6 footer-contact">
+            <h3>Butterfly</h3>
+            <p>
+              A108 Adam Street <br>
+              New York, NY 535022<br>
+              United States <br><br>
+              <strong>Phone:</strong> +1 5589 55488 55<br>
+              <strong>Email:</strong> info@example.com<br>
+            </p>
+          </div>
+
+          <div class="col-lg-3 col-md-6 footer-links">
+            <h4>Useful Links</h4>
+            <ul>
+              <li><i class="bx bx-chevron-right"></i> <a href="#">Home</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="#">About us</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="#">Services</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="#">Terms of service</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="#">Privacy policy</a></li>
+            </ul>
+          </div>
+
+          <div class="col-lg-3 col-md-6 footer-links">
+            <h4>Our Services</h4>
+            <ul>
+              <li><i class="bx bx-chevron-right"></i> <a href="#">Web Design</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="#">Web Development</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="#">Product Management</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="#">Marketing</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="#">Graphic Design</a></li>
+            </ul>
+          </div>
+
+          <div class="col-lg-3 col-md-6 footer-links">
+            <h4>Our Social Networks</h4>
+            <p>Cras fermentum odio eu feugiat lide par naso tierra videa magna derita valies</p>
+            <div class="social-links mt-3">
+              <a href="#" class="twitter"><i class="bx bxl-twitter"></i></a>
+              <a href="#" class="facebook"><i class="bx bxl-facebook"></i></a>
+              <a href="#" class="instagram"><i class="bx bxl-instagram"></i></a>
+              <a href="#" class="google-plus"><i class="bx bxl-skype"></i></a>
+              <a href="#" class="linkedin"><i class="bx bxl-linkedin"></i></a>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
 
     <div class="container py-4">
       <div class="copyright">
