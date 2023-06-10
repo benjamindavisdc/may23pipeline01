@@ -332,7 +332,11 @@ h6 {
 
 
 /*--------------------------------------------------------------
+<<<<<<< HEAD
 # Copy CODE PIPELINE Box Header BEN
+=======
+# Copy Box Header BEN
+>>>>>>> origin/main
 --------------------------------------------------------------*/
 
 .code-container {
@@ -341,7 +345,10 @@ h6 {
   width: 100%;
   max-width: 100%;
   min-width: 0;
+<<<<<<< HEAD
   font-size: 14px;
+=======
+>>>>>>> origin/main
 }
 
 
@@ -376,6 +383,7 @@ pre {
 }
 
 
+<<<<<<< HEAD
 
 /*--------------------------------------------------------------
 # Blue Section
@@ -384,6 +392,8 @@ pre {
 #blue {
   background: #ebf7fc;
 }
+=======
+>>>>>>> origin/main
 /*--------------------------------------------------------------
 # Hero Section
 --------------------------------------------------------------*/
@@ -470,10 +480,13 @@ section {
   background-color: #f4fbfe;
 }
 
+<<<<<<< HEAD
 .section-bg:nth-child(2) {
   background-color: #1da2e0;
 }
 
+=======
+>>>>>>> origin/main
 .section-title {
   text-align: center;
   padding-bottom: 30px;
@@ -1411,7 +1424,11 @@ section {
 
 #footer .footer-newsletter {
   padding: 50px 0;
+<<<<<<< HEAD
   background: #fff;
+=======
+  background: #f0f9fd;
+>>>>>>> origin/main
   text-align: center;
   font-size: 15px;
 }
@@ -1463,7 +1480,11 @@ section {
 
 #footer .footer-top {
   padding: 60px 0 30px 0;
+<<<<<<< HEAD
   background: #f0f9fd;
+=======
+  background: #fff;
+>>>>>>> origin/main
 }
 
 #footer .footer-top .footer-contact {
@@ -1565,6 +1586,7 @@ section {
   color: #0f394c;
 }
 
+<<<<<<< HEAD
 #footer .btn-get-started {
   font-family: "Dosis", sans-serif;
   font-weight: 500;
@@ -1580,6 +1602,8 @@ section {
   text-transform: uppercase;
 }
 
+=======
+>>>>>>> origin/main
 @media (max-width: 575px) {
 
   #footer .copyright,
