@@ -20,6 +20,25 @@
     }
   }
 
+
+    /**
+   * CODE SNIPPET BEN
+   */
+
+  const codeSnippet = document.querySelector('code');
+
+codeSnippet.addEventListener('click', () => {
+  navigator.clipboard.writeText(codeSnippet.textContent)
+    .then(() => {
+      alert('Code copied to clipboard!');
+    })
+    .catch((error) => {
+      console.error('Failed to copy code to clipboard:', error);
+    });
+});
+
+
+
   /**
    * Easy event listener function
    */
@@ -228,5 +247,14 @@
    * Initiate Pure Counter 
    */
   new PureCounter();
+
+
+    /**
+   * Initiate PRISM SYNTAX HIGHLIGHTER
+   */
+  document.addEventListener("DOMContentLoaded", function() {
+    Prism.highlightAll();
+  });
+  
 
 })()

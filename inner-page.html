@@ -2,10 +2,14 @@
 <html lang="en">
 
 <head>
+  <script src="assets/js/prism.js"></script>
+  <link href="assets/css/prism.css" rel="stylesheet" />
+
+
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-  <title>Inner Page - Butterfly Bootstrap Template</title>
+  <title>Ben Davis DevOps Projects</title>
   <meta content="" name="description">
   <meta content="" name="keywords">
 
@@ -36,71 +40,149 @@
 </head>
 
 <body>
+<!-- ======= Header ======= -->
+<header id="header" class="fixed-top">
+  <div class="container d-flex align-items-center justify-content-between">
 
-  <!-- ======= Header ======= -->
-  <header id="header" class="fixed-top">
-    <div class="container d-flex align-items-center justify-content-between">
+    <a href="index.html" class="logo"><img src="assets/img/Ben Logo wide.png" alt="" class="img-fluid"></a>
+    <!-- Uncomment below if you prefer to use text as a logo -->
+    <!-- <h1 class="logo"><a href="index.html">Butterfly</a></h1> -->
 
-      <a href="index.html" class="logo"><img src="assets/img/logo.png" alt="" class="img-fluid"></a>
-      <!-- Uncomment below if you prefer to use text as a logo -->
-      <!-- <h1 class="logo"><a href="index.html">Butterfly</a></h1> -->
+    <nav id="navbar" class="navbar">
+      <ul>
+        <li><a class="nav-link scrollto " href="index.html">Home</a></li>
+        <li><a class="nav-link scrollto" href="#about">1. Automated Infrastructure Blueprint</a></li>
+        <li><a class="nav-link scrollto" href="#services">2. CI/CD Container Deployment</a></li>
+        <li><a class="nav-link scrollto active" href="inner-page.html">3. Serverless Datafeed</a></li>
+        <li><a class="nav-link scrollto" href="#contact">Contact</a></li>
+      </ul>
+      <i class="bi bi-list mobile-nav-toggle"></i>
+    </nav><!-- .navbar -->
 
-      <nav id="navbar" class="navbar">
-        <ul>
-          <li><a class="nav-link scrollto " href="#hero">Home</a></li>
-          <li><a class="nav-link scrollto" href="#about">About</a></li>
-          <li><a class="nav-link scrollto" href="#services">Services</a></li>
-          <li><a class="nav-link scrollto " href="#portfolio">Portfolio</a></li>
-          <li><a class="nav-link scrollto" href="#team">Team</a></li>
-          <li class="dropdown"><a href="#"><span>Drop Down</span> <i class="bi bi-chevron-down"></i></a>
-            <ul>
-              <li><a href="#">Drop Down 1</a></li>
-              <li class="dropdown"><a href="#"><span>Deep Drop Down</span> <i class="bi bi-chevron-right"></i></a>
-                <ul>
-                  <li><a href="#">Deep Drop Down 1</a></li>
-                  <li><a href="#">Deep Drop Down 2</a></li>
-                  <li><a href="#">Deep Drop Down 3</a></li>
-                  <li><a href="#">Deep Drop Down 4</a></li>
-                  <li><a href="#">Deep Drop Down 5</a></li>
-                </ul>
-              </li>
-              <li><a href="#">Drop Down 2</a></li>
-              <li><a href="#">Drop Down 3</a></li>
-              <li><a href="#">Drop Down 4</a></li>
-            </ul>
-          </li>
-          <li><a class="nav-link scrollto" href="#contact">Contact</a></li>
-        </ul>
-        <i class="bi bi-list mobile-nav-toggle"></i>
-      </nav><!-- .navbar -->
+  </div>
+</header><!-- End Header -->
 
+  <!-- ======= Hero Section ======= -->
+  <section id="hero" class="d-flex align-items-center">
+
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-6 pt-4 pt-lg-0 order-2 order-lg-1 d-flex flex-column justify-content-center">
+          <h1>Serverless Datafeed Pipeline</h1>
+          <h2>Stay up to date on the latest info with Python and DynamoDB.</h2>
+          
+        </div>
+        <div class="col-lg-6 order-1 order-lg-2 hero-img">
+          <img src="assets/img/dbsample.png" class="img-fluid border" alt="">
+        </div>
+      </div>
     </div>
-  </header><!-- End Header -->
+
+  </section><!-- End Hero -->
 
   <main id="main">
+<!-- ======= About Section 1 ======= -->
+<section id="about" class="about">
+  <div class="container">
 
-    <!-- ======= Breadcrumbs ======= -->
-    <section class="breadcrumbs">
-      <div class="container">
+    <div class="row">
+      <div class="col-xl-6 col-lg-6 d-flex justify-content-center align-items-stretch position-relative order-lg-1 order-xl-1 order-2">
+      <div class="code-container">
+        <div class="code-banner">X-ray - Python</div>
+        <pre>
+          <code class="language-python">
+import requests
+import base64
+import boto3
+            
+def lambda_handler(event, context):
+    # Scrape the webpage
+    url = "https://api.github.com/repos/*"
+    response = requests.get(url)
+                
+    if response.status_code == 200:
+        page_text = response.json()["content"]
+        decoded_bytes = base64.b64decode(page_text)
+        scraped_text = decoded_bytes.decode(errors='replace')
+            
+        print("Scraped webpage text:")
+        print(scraped_text)
+                    
+        # Put the scraped text into DynamoDB
+        dynamodb = boto3.resource('dynamodb', region_name='us-east-1')
+        table = dynamodb.Table('x-ray_table')
+            
+        response = table.put_item(
+            Item={
+                'file_path': url,
+                'file_content': scraped_text
+            }
+        )
+            
+        return {
+            'statusCode': 200,
+            'body': 'Item added successfully to DynamoDB table.'
+        }
+    else:
+        return {
+            'statusCode': response.status_code,
+            'body': 'Failed to scrape webpage.'
+        }</code>
+        </pre>
+      </div>  
+      </div>
 
-        <div class="d-flex justify-content-between align-items-center">
-          <h2>Inner Page</h2>
-          <ol>
-            <li><a href="index.html">Home</a></li>
-            <li>Inner Page</li>
-          </ol>
+      <div class="col-xl-6 col-lg-6 icon-boxes d-flex flex-column align-items-stretch justify-content-center py-6 px-lg-6 order-lg-2 order-xl-2 order-1">
+        <h3>'X-ray App - A Full Stack Python REST API'</h3>
+
+        <div class="icon-box">
+          <div class="icon"><i class="bx bx-atom"></i></div>
+          <h4 class="title"><a href="">Dynamic Content</a></h4>
+          <p class="description">The Xray-App is a two part web app that scrapes repositories, stores the data in DynamoDB, then displays the data here as HTML using Python Flask.</p>
         </div>
 
-      </div>
-    </section><!-- End Breadcrumbs -->
 
-    <section class="inner-page">
-      <div class="container">
-        <p>
-          Example inner page template
-        </p>
+        <p>The X-ray app is an exciting project I developed to showcase my DevOps skills in infrastructure deployment. </p>
+
+        <p>As a seasoned professional in this field, I realized that traditional portfolio websites were limited in demonstrating the backend aspects of my work. So, I set out to create a solution that allows visitors to delve into my infrastructure code and gain a deeper understanding of my expertise.</p>
+
+        <p>My primary motivation behind building the X-ray app was to address the need for a platform that highlights the most recent versions of my infrastructure files.</p>
+        <p>With this app, I wanted to ensure that potential employers or clients can explore my code and stay updated on the latest developments in my projects. By dynamically pulling the code directly from my repositories, I eliminate the hassle of manually updating snippets and ensure that viewers always have access to the most up-to-date information.</p>
+
+        
+
       </div>
-    </section>
+    </div>
+
+  </div>
+</section><!-- End About Section -->
+
+<!-- ======= About Section 2 ======= -->
+<section id="blue" class="about">
+  <div class="container">
+
+    <div class="row">
+      <div class="col-xl-7 col-lg-6 icon-boxes d-flex flex-column align-items-stretch justify-content-center py-5 px-lg-5">
+        <h3>DevOps</h3>
+        <p>Another critical aspect I wanted to address with the X-ray app was the ability to iterate rapidly on new changes to my infrastructure. I found it cumbersome and time-consuming to manually update code snippets on my portfolio website whenever I made updates to my projects. To overcome this hurdle, the X-ray app leverages automation to retrieve the latest code from my repositories. This way, I can focus on refining and improving my infrastructure without worrying about keeping the website in sync.</p>
+
+          <p>Embracing Agility
+          By building the X-ray app, I've created a platform that aligns with my development philosophy of embracing agility. It allows me to showcase my backend scripts, like Dockerfiles and Jenkinsfiles, in an organized manner, enabling visitors to navigate and understand my deployment processes effortlessly. The app provides an interactive and user-friendly experience, giving viewers a glimpse into the inner workings of my projects.</p>
+          
+          <p>In summary, the X-ray app is my solution for showcasing my DevOps skills in infrastructure deployment. It ensures that viewers have access to the most recent versions of my infrastructure files, while also enabling me to iterate rapidly on new changes. By offering this transparency into my work, I aim to provide potential employers and clients with a comprehensive understanding of my expertise and commitment to delivering robust and scalable infrastructure solutions.</p>
+      </div>
+
+      <div class="col-xl-5 col-lg-6 d-flex justify-content-center align-items-stretch position-relative">
+        <img src="https://www.expresssewer.com/hubfs/different%20types%20of%20plumbing%20pipes.jpeg" height="400" width="700" class="img-fluid" alt="Pipes Image">
+      </div>
+    </div>
+
+  </div>
+</section><!-- End About Section -->
+
+
+  <main id="main">
+    
 
   </main><!-- End #main -->
 
@@ -110,12 +192,10 @@
     <div class="footer-newsletter">
       <div class="container">
         <div class="row justify-content-center">
-          <div class="col-lg-6">
-            <h4>Join Our Newsletter</h4>
-            <p>Tamen quem nulla quae legam multos aute sint culpa legam noster magna</p>
-            <form action="" method="post">
-              <input type="email" name="email"><input type="submit" value="Subscribe">
-            </form>
+          <div class="col-lg-6 pt-4 pt-lg-0 order-2 order-lg-1 d-flex flex-column justify-content-center">
+            <h4>Find me on Linkedin</h4>
+            <p>I am always excited about new opportunities in the Austin area.</p>
+            <div><a href="https://www.linkedin.com/in/benjamin-davis-awssaa-dc/" class="btn-get-started scrollto">LinkedIn</a></div>
           </div>
         </div>
       </div>
@@ -126,48 +206,38 @@
         <div class="row">
 
           <div class="col-lg-3 col-md-6 footer-contact">
-            <h3>Butterfly</h3>
+            <h3>Benjamin Davis</h3>
             <p>
-              A108 Adam Street <br>
-              New York, NY 535022<br>
-              United States <br><br>
-              <strong>Phone:</strong> +1 5589 55488 55<br>
-              <strong>Email:</strong> info@example.com<br>
+              Cloud Engineer <br>
+              Austin, Tx<br>
+              <br>
+              <strong>Phone:</strong> (972) 310 8939<br>
+              <strong>Email:</strong> <a href="mailto:benjamin.davs.dc@gmail.com">benjamin.davs.dc@gmail.com</a><br>
             </p>
           </div>
 
           <div class="col-lg-3 col-md-6 footer-links">
             <h4>Useful Links</h4>
             <ul>
-              <li><i class="bx bx-chevron-right"></i> <a href="#">Home</a></li>
-              <li><i class="bx bx-chevron-right"></i> <a href="#">About us</a></li>
-              <li><i class="bx bx-chevron-right"></i> <a href="#">Services</a></li>
-              <li><i class="bx bx-chevron-right"></i> <a href="#">Terms of service</a></li>
-              <li><i class="bx bx-chevron-right"></i> <a href="#">Privacy policy</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="index.html">Home</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="https://www.linkedin.com/in/benjamin-davis-awssaa-dc/">Linkedin</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="https://github.com/benjamindavisdc">Github</a></li>
             </ul>
           </div>
 
           <div class="col-lg-3 col-md-6 footer-links">
-            <h4>Our Services</h4>
+            <h4>My Services</h4>
             <ul>
-              <li><i class="bx bx-chevron-right"></i> <a href="#">Web Design</a></li>
-              <li><i class="bx bx-chevron-right"></i> <a href="#">Web Development</a></li>
-              <li><i class="bx bx-chevron-right"></i> <a href="#">Product Management</a></li>
-              <li><i class="bx bx-chevron-right"></i> <a href="#">Marketing</a></li>
-              <li><i class="bx bx-chevron-right"></i> <a href="#">Graphic Design</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="#">Cloud Infrastructure</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="#">System Administration</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="#">Python Automation</a></li>
             </ul>
           </div>
 
           <div class="col-lg-3 col-md-6 footer-links">
-            <h4>Our Social Networks</h4>
-            <p>Cras fermentum odio eu feugiat lide par naso tierra videa magna derita valies</p>
-            <div class="social-links mt-3">
-              <a href="#" class="twitter"><i class="bx bxl-twitter"></i></a>
-              <a href="#" class="facebook"><i class="bx bxl-facebook"></i></a>
-              <a href="#" class="instagram"><i class="bx bxl-instagram"></i></a>
-              <a href="#" class="google-plus"><i class="bx bxl-skype"></i></a>
-              <a href="#" class="linkedin"><i class="bx bxl-linkedin"></i></a>
-            </div>
+            <h4>Healthcare Industry Experience</h4>
+            <p>I have treated over 30,000 patients as a primary healthcare provider and have deep expertise in all aspects of healthcare administration.</p>
+            <p>I hope to one day develop the knowlege and skills to create a variety of tools to help doctors and patients acheive better results in less time.</p>
           </div>
 
         </div>
