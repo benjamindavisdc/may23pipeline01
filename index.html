@@ -86,9 +86,9 @@
   <div class="container">
 
     <div class="row">
-      <div class="col-xl-6 col-lg-6 d-flex justify-content-center align-items-stretch position-relative">
+      <div class="col-xl-6 col-lg-6 d-flex justify-content-center align-items-stretch position-relative order-lg-1 order-xl-1 order-2">
       <div class="code-container">
-        <div class="code-banner">X-ray</div>
+        <div class="code-banner">X-ray - Python</div>
         <pre>
           <code class="language-python">
 import requests
@@ -132,20 +132,22 @@ def lambda_handler(event, context):
       </div>  
       </div>
 
-      <div class="col-xl-6 col-lg-6 icon-boxes d-flex flex-column align-items-stretch justify-content-center py-6 px-lg-6">
-        <h3>'X-ray App'</h3>
+      <div class="col-xl-6 col-lg-6 icon-boxes d-flex flex-column align-items-stretch justify-content-center py-6 px-lg-6 order-lg-2 order-xl-2 order-1">
+        <h3>'X-ray App - A Full Stack Python REST API'</h3>
 
         <div class="icon-box">
           <div class="icon"><i class="bx bx-atom"></i></div>
           <h4 class="title"><a href="">Dynamic Content</a></h4>
-          <p class="description">Using Pthon and DynamoDB, we can deliver dynamic content to our front end, keeping us up to date on all infrastructure changes.</p>
+          <p class="description">The Xray-App is a two part web app that scrapes repositories, stores the data in DynamoDB, then displays the data here as HTML using Python Flask.</p>
         </div>
 
 
-        <p>The X-ray app is an exciting project I developed to showcase my DevOps skills in infrastructure deployment. As a seasoned professional in this field, I realized that traditional portfolio websites were limited in demonstrating the backend aspects of my work. So, I set out to create a solution that allows visitors to delve into my infrastructure code and gain a deeper understanding of my expertise.
-        </p>
+        <p>The X-ray app is an exciting project I developed to showcase my DevOps skills in infrastructure deployment. </p>
 
-        <p>My primary motivation behind building the X-ray app was to address the need for a platform that highlights the most recent versions of my infrastructure files. With this app, I wanted to ensure that potential employers or clients can explore my code and stay updated on the latest developments in my projects. By dynamically pulling the code directly from my repositories, I eliminate the hassle of manually updating snippets and ensure that viewers always have access to the most up-to-date information.</p>
+        <p>As a seasoned professional in this field, I realized that traditional portfolio websites were limited in demonstrating the backend aspects of my work. So, I set out to create a solution that allows visitors to delve into my infrastructure code and gain a deeper understanding of my expertise.</p>
+
+        <p>My primary motivation behind building the X-ray app was to address the need for a platform that highlights the most recent versions of my infrastructure files.</p>
+        <p>With this app, I wanted to ensure that potential employers or clients can explore my code and stay updated on the latest developments in my projects. By dynamically pulling the code directly from my repositories, I eliminate the hassle of manually updating snippets and ensure that viewers always have access to the most up-to-date information.</p>
 
         
 
@@ -156,11 +158,11 @@ def lambda_handler(event, context):
 </section><!-- End About Section -->
 
 <!-- ======= About Section 2 ======= -->
-<section id="about" class="about">
+<section id="blue" class="about">
   <div class="container">
 
     <div class="row">
-      <div class="col-xl-7 col-lg-6 icon-boxes d-flex flex-column align-items-stretch justify-content-center py-5 px-lg-5">
+      <div class="col-xl-6 col-lg-6 icon-boxes d-flex flex-column align-items-stretch justify-content-center py-5 px-lg-5">
         <h3>DevOps</h3>
         <p>Another critical aspect I wanted to address with the X-ray app was the ability to iterate rapidly on new changes to my infrastructure. I found it cumbersome and time-consuming to manually update code snippets on my portfolio website whenever I made updates to my projects. To overcome this hurdle, the X-ray app leverages automation to retrieve the latest code from my repositories. This way, I can focus on refining and improving my infrastructure without worrying about keeping the website in sync.</p>
 
@@ -303,14 +305,14 @@ def lambda_handler(event, context):
       <div class="container">
 
         <div class="section-title">
-          <h2>Pipelines</h2>
-          <p>Magnam dolores commodi suscipit. Necessitatibus eius consequatur ex aliquid fuga eum quidem. Sit sint consectetur velit. Quisquam quos quisquam cupiditate. Et nemo qui impedit suscipit alias ea. Quia fugiat sit in iste officiis commodi quidem hic quas.</p>
+          <h2>Tech Stack</h2>
+          <p>Each tool has played a role in my past work projects.</p>
         </div>
 
         <div class="row">
           <div class="col-lg-12 d-flex justify-content-center">
             <ul id="portfolio-flters">
-              <li data-filter="*" class="filter-active">All</li>
+              <li>All</li>
               <li data-filter=".filter-app">Compute</li>
               <li data-filter=".filter-card">Storage</li>
               <li data-filter=".filter-web">Deployment</li>
@@ -322,38 +324,22 @@ def lambda_handler(event, context):
 
           <div class="col-lg-4 col-md-6 portfolio-item filter-app">
             <div class="portfolio-wrap">
-              <img src="assets/img/portfolio/portfolio-1.jpg" class="img-fluid" alt="">
+              <img src="assets/img/portfolio/docker-logo.png" class="img-fluid" alt="">
               <div class="portfolio-info">
-                <h4>App 1</h4>
-                <p>App</p>
-                <div class="portfolio-links">
-                  <a href="assets/img/portfolio/portfolio-1.jpg" data-gallery="portfolioGallery" class="portfolio-lightbox" title="App 1"><i class="bx bx-plus"></i></a>
-                  <a href="portfolio-details.html" title="More Details"><i class="bx bx-link"></i></a>
-                </div>
+                <h4>Containerization</h4>
+                <p>In this project, I used Docker to create separate containers inside my server to handle both the Pipeline, and Web Hosting in a single VM.</p>
               </div>
             </div>
           </div>
 
-          <div class="col-lg-4 col-md-6 portfolio-item filter-web">
-            <div class="portfolio-wrap">
-              <img src="assets/img/portfolio/portfolio-2.jpg" class="img-fluid" alt="">
-              <div class="portfolio-info">
-                <h4>Web 3</h4>
-                <p>Web</p>
-                <div class="portfolio-links">
-                  <a href="assets/img/portfolio/portfolio-2.jpg" data-gallery="portfolioGallery" class="portfolio-lightbox" title="Web 3"><i class="bx bx-plus"></i></a>
-                  <a href="portfolio-details.html" title="More Details"><i class="bx bx-link"></i></a>
-                </div>
-              </div>
-            </div>
-          </div>
+
 
           <div class="col-lg-4 col-md-6 portfolio-item filter-app">
             <div class="portfolio-wrap">
-              <img src="assets/img/portfolio/portfolio-3.jpg" class="img-fluid" alt="">
+              <img src="assets/img/portfolio/terraform-logo.svg" class="img-fluid" alt="">
               <div class="portfolio-info">
-                <h4>App 2</h4>
-                <p>App</p>
+                <h4>Infrastructure as Code</h4>
+                <p>Terraform</p>
                 <div class="portfolio-links">
                   <a href="assets/img/portfolio/portfolio-3.jpg" data-gallery="portfolioGallery" class="portfolio-lightbox" title="App 2"><i class="bx bx-plus"></i></a>
                   <a href="portfolio-details.html" title="More Details"><i class="bx bx-link"></i></a>
@@ -362,86 +348,77 @@ def lambda_handler(event, context):
             </div>
           </div>
 
+          <div class="col-lg-4 col-md-6 portfolio-item filter-web">
+            <div class="portfolio-wrap">
+              <img src="assets/img/portfolio/jenkins-logo.png" class="img-fluid" alt="">
+              <div class="portfolio-info">
+                <h4>CI/CD</h4>
+                <p>Jenkins</p>
+              </div>
+            </div>
+          </div>
+
           <div class="col-lg-4 col-md-6 portfolio-item filter-card">
             <div class="portfolio-wrap">
-              <img src="assets/img/portfolio/portfolio-4.jpg" class="img-fluid" alt="">
+              <img src="assets/img/portfolio/apache-logo.png" class="img-fluid" alt="">
               <div class="portfolio-info">
-                <h4>Card 2</h4>
-                <p>Card</p>
-                <div class="portfolio-links">
-                  <a href="assets/img/portfolio/portfolio-4.jpg" data-gallery="portfolioGallery" class="portfolio-lightbox" title="Card 2"><i class="bx bx-plus"></i></a>
-                  <a href="portfolio-details.html" title="More Details"><i class="bx bx-link"></i></a>
-                </div>
+                <h4>Web Hosting</h4>
+                <p>Apache Hosts our site for free.</p>
+                
               </div>
             </div>
           </div>
 
           <div class="col-lg-4 col-md-6 portfolio-item filter-web">
             <div class="portfolio-wrap">
-              <img src="assets/img/portfolio/portfolio-5.jpg" class="img-fluid" alt="">
+              <img src="assets/img/portfolio/aws-logo2.jpg" class="img-fluid" alt="">
               <div class="portfolio-info">
-                <h4>Web 2</h4>
-                <p>Web</p>
-                <div class="portfolio-links">
-                  <a href="assets/img/portfolio/portfolio-5.jpg" data-gallery="portfolioGallery" class="portfolio-lightbox" title="Web 2"><i class="bx bx-plus"></i></a>
-                  <a href="portfolio-details.html" title="More Details"><i class="bx bx-link"></i></a>
-                </div>
+                <h4>AWS</h4>
+                <p>EC2, ALB, ASG, Firewalls, Policies</p>
+              
               </div>
             </div>
           </div>
 
           <div class="col-lg-4 col-md-6 portfolio-item filter-app">
             <div class="portfolio-wrap">
-              <img src="assets/img/portfolio/portfolio-6.jpg" class="img-fluid" alt="">
+              <img src="assets/img/portfolio/dynamodb.png" class="img-fluid" alt="">
               <div class="portfolio-info">
-                <h4>App 3</h4>
-                <p>App</p>
-                <div class="portfolio-links">
-                  <a href="assets/img/portfolio/portfolio-6.jpg" data-gallery="portfolioGallery" class="portfolio-lightbox" title="App 3"><i class="bx bx-plus"></i></a>
-                  <a href="portfolio-details.html" title="More Details"><i class="bx bx-link"></i></a>
-                </div>
+                <h4>NoSQL Database</h4>
+                <p>DynamoDB stores data for dynamic retreival.</p>
               </div>
             </div>
           </div>
 
           <div class="col-lg-4 col-md-6 portfolio-item filter-card">
             <div class="portfolio-wrap">
-              <img src="assets/img/portfolio/portfolio-7.jpg" class="img-fluid" alt="">
+              <img src="assets/img/portfolio/lambda-logo.png" class="img-fluid" alt="">
               <div class="portfolio-info">
-                <h4>Card 1</h4>
-                <p>Card</p>
-                <div class="portfolio-links">
-                  <a href="assets/img/portfolio/portfolio-7.jpg" data-gallery="portfolioGallery" class="portfolio-lightbox" title="Card 1"><i class="bx bx-plus"></i></a>
-                  <a href="portfolio-details.html" title="More Details"><i class="bx bx-link"></i></a>
-                </div>
+                <h4>Serverless</h4>
+                <p>Event Driven Architecture</p>
+                
               </div>
             </div>
           </div>
 
           <div class="col-lg-4 col-md-6 portfolio-item filter-card">
             <div class="portfolio-wrap">
-              <img src="assets/img/portfolio/portfolio-8.jpg" class="img-fluid" alt="">
+              <img src="assets/img/portfolio/python-logo.png" class="img-fluid" alt="">
               <div class="portfolio-info">
-                <h4>Card 3</h4>
-                <p>Card</p>
-                <div class="portfolio-links">
-                  <a href="assets/img/portfolio/portfolio-8.jpg" data-gallery="portfolioGallery" class="portfolio-lightbox" title="Card 3"><i class="bx bx-plus"></i></a>
-                  <a href="portfolio-details.html" title="More Details"><i class="bx bx-link"></i></a>
-                </div>
+                <h4>Programming</h4>
+                <p>Python</p>
+                
               </div>
             </div>
           </div>
 
           <div class="col-lg-4 col-md-6 portfolio-item filter-web">
             <div class="portfolio-wrap">
-              <img src="assets/img/portfolio/portfolio-9.jpg" class="img-fluid" alt="">
+              <img src="assets/img/portfolio/flask-logo.png" class="img-fluid" alt="">
               <div class="portfolio-info">
-                <h4>Web 3</h4>
-                <p>Web</p>
-                <div class="portfolio-links">
-                  <a href="assets/img/portfolio/portfolio-9.jpg" data-gallery="portfolioGallery" class="portfolio-lightbox" title="Web 3"><i class="bx bx-plus"></i></a>
-                  <a href="portfolio-details.html" title="More Details"><i class="bx bx-link"></i></a>
-                </div>
+                <h4>Flask</h4>
+                <p>Full Stack</p>
+  
               </div>
             </div>
           </div>
