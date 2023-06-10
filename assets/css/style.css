@@ -338,9 +338,11 @@ h6 {
 .code-container {
   overflow-x: auto;
   overflow-y: auto;
-  width: 100%;
-  max-width: 100%;
+  width: 90%;
+  max-width: 90%;
   min-width: 0;
+  font-size: smaller;
+  border: 1px solid #000;
 }
 
 
@@ -348,7 +350,7 @@ h6 {
 .code-banner {
   background-color: #000;
   color: #fff;
-  padding: 5px;
+  padding: 8px;
   text-align: left;
   width: 100%;
 }
@@ -372,7 +374,7 @@ h6 {
 
 pre {
   background-color: #f5f5f5;
-  padding-left: 10px;
+  padding-left: 8px;
   padding-right: 10px;
   padding-top: 0;
   padding-bottom: 0;
@@ -388,6 +390,14 @@ pre {
 
 #blue {
   background: #ebf7fc;
+}
+
+/*--------------------------------------------------------------
+# White Section
+--------------------------------------------------------------*/
+
+#white {
+  background: #fff;
 }
 /*--------------------------------------------------------------
 # Hero Section

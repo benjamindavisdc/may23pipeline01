@@ -50,6 +50,35 @@
 
     <nav id="navbar" class="navbar">
       <ul>
+        <li><a class="nav-link scrollto active" href="#hero">Home</a></li>
+        <li><a class="nav-link scrollto" href="#about">About</a></li>
+        <li><a class="nav-link scrollto" href="#services">Services</a></li>
+        <li><a class="nav-link scrollto " href="#portfolio">Portfolio</a></li>
+        <li><a class="nav-link scrollto" href="#team">Team</a></li>
+        <li class="dropdown"><a href="#"><span>Drop Down</span> <i class="bi bi-chevron-down"></i></a>
+          <ul>
+            <li><a href="#">Drop Down 1</a></li>
+            <li class="dropdown"><a href="#"><span>Deep Drop Down</span> <i class="bi bi-chevron-right"></i></a>
+              <ul>
+                <li><a href="#">Deep Drop Down 1</a></li>
+                <li><a href="#">Deep Drop Down 2</a></li>
+                <li><a href="#">Deep Drop Down 3</a></li>
+                <li><a href="#">Deep Drop Down 4</a></li>
+                <li><a href="#">Deep Drop Down 5</a></li>
+              </ul>
+            </li>
+            <li><a href="#">Drop Down 2</a></li>
+            <li><a href="#">Drop Down 3</a></li>
+            <li><a href="#">Drop Down 4</a></li>
+          </ul>
+        </li>
+        <li><a class="nav-link scrollto" href="#contact">Contact</a></li>
+      </ul>
+      <i class="bi bi-list mobile-nav-toggle"></i>
+    </nav><!-- .navbar -->
+
+    <nav id="navbar" class="navbar">
+      <ul>
         <li><a class="nav-link scrollto " href="index.html">Home</a></li>
         <li><a class="nav-link scrollto" href="#about">1. Automated Infrastructure Blueprint</a></li>
         <li><a class="nav-link scrollto" href="#services">2. CI/CD Container Deployment</a></li>
@@ -69,7 +98,7 @@
       <div class="row">
         <div class="col-lg-6 pt-4 pt-lg-0 order-2 order-lg-1 d-flex flex-column justify-content-center">
           <h1>Benjamin Davis</h1>
-          <h2>Cloud Infrastructure Projects using AWS, Jenkins, Terraform, and more.</h2>
+          <h2>Welcome to a guided tour of this site's Cloud Backend Infrastructure.</h2>
           <div><a href="#about" class="btn-get-started scrollto">Portfolio Projects</a></div>
         </div>
         <div class="col-lg-6 order-1 order-lg-2 hero-img">
@@ -182,67 +211,8 @@ def lambda_handler(event, context):
 
     
 
-    <!-- ======= Clients Section ======= -->
-    <section id="clients" class="clients">
-      <div class="container">
-
-        <div class="row no-gutters clients-wrap clearfix wow fadeInUp">
-
-          <div class="col-lg-3 col-md-4 col-6">
-            <div class="client-logo">
-              <img src="assets/img/clients/client-1.png" class="img-fluid" alt="">
-            </div>
-          </div>
-
-          <div class="col-lg-3 col-md-4 col-6">
-            <div class="client-logo">
-              <img src="assets/img/clients/client-2.png" class="img-fluid" alt="">
-            </div>
-          </div>
-
-          <div class="col-lg-3 col-md-4 col-6">
-            <div class="client-logo">
-              <img src="assets/img/clients/client-3.png" class="img-fluid" alt="">
-            </div>
-          </div>
-
-          <div class="col-lg-3 col-md-4 col-6">
-            <div class="client-logo">
-              <img src="assets/img/clients/client-4.png" class="img-fluid" alt="">
-            </div>
-          </div>
-
-          <div class="col-lg-3 col-md-4 col-6">
-            <div class="client-logo">
-              <img src="assets/img/clients/client-5.png" class="img-fluid" alt="">
-            </div>
-          </div>
-
-          <div class="col-lg-3 col-md-4 col-6">
-            <div class="client-logo">
-              <img src="assets/img/clients/client-6.png" class="img-fluid" alt="">
-            </div>
-          </div>
-
-          <div class="col-lg-3 col-md-4 col-6">
-            <div class="client-logo">
-              <img src="assets/img/clients/client-7.png" class="img-fluid" alt="">
-            </div>
-          </div>
-
-          <div class="col-lg-3 col-md-4 col-6">
-            <div class="client-logo">
-              <img src="assets/img/clients/client-8.png" class="img-fluid" alt="">
-            </div>
-          </div>
-
-        </div>
-
-      </div>
-    </section><!-- End Clients Section -->
-
     <!-- ======= Services Section ======= -->
-    <section id="services" class="services section-bg">
+    <section id="white" class="services section-bg">
       <div class="container">
 
         <div class="section-title">
@@ -253,180 +223,75 @@ def lambda_handler(event, context):
         <div class="row">
           <div class="col-lg-4 col-md-6">
             <div class="icon-box">
-              <div class="icon"><i class="bi bi-cash-stack" style="color: #ff689b;"></i></div>
-              <h4 class="title"><a href="">Lorem Ipsum</a></h4>
-              <p class="description">Voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident</p>
+              <img src="assets/img/portfolio/docker-logo.png" class="img-fluid" alt="">
+              <h4 class="title"><a href="">Containerization</a></h4>
+              <p class="description">In this project, I used Docker to create separate containers inside my server to handle both the Pipeline, and Web Hosting in a single VM.</p>
             </div>
           </div>
           <div class="col-lg-4 col-md-6">
             <div class="icon-box">
-              <div class="icon"><i class="bi bi-calendar4-week" style="color: #e9bf06;"></i></div>
-              <h4 class="title"><a href="">Dolor Sitema</a></h4>
-              <p class="description">Minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat tarad limino ata</p>
+              <img src="assets/img/portfolio/terraform logo.png" class="img-fluid" alt="">
+              <h4 class="title"><a href="">Infrastructure as Code</a></h4>
+              <p class="description">Terraform</p>
             </div>
           </div>
 
           <div class="col-lg-4 col-md-6" data-wow-delay="0.1s">
             <div class="icon-box">
-              <div class="icon"><i class="bi bi-chat-text" style="color: #3fcdc7;"></i></div>
-              <h4 class="title"><a href="">Sed ut perspiciatis</a></h4>
-              <p class="description">Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur</p>
+              <img src="assets/img/portfolio/jenkins-logo.png" class="img-fluid" alt="">
+              <h4 class="title"><a href="">CI/CD</a></h4>
+              <p class="description">Jenkins</p>
             </div>
           </div>
           <div class="col-lg-4 col-md-6" data-wow-delay="0.1s">
             <div class="icon-box">
-              <div class="icon"><i class="bi bi-credit-card-2-front" style="color:#41cf2e;"></i></div>
-              <h4 class="title"><a href="">Magni Dolores</a></h4>
-              <p class="description">Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum</p>
+              <img src="assets/img/portfolio/apache-logo.png" class="img-fluid" alt="">
+              <h4 class="title"><a href="">Web Hosting</a></h4>
+              <p class="description">Apache Hosts our site for free.</p>
             </div>
           </div>
 
           <div class="col-lg-4 col-md-6" data-wow-delay="0.2s">
             <div class="icon-box">
-              <div class="icon"><i class="bi bi-globe" style="color: #d6ff22;"></i></div>
-              <h4 class="title"><a href="">Nemo Enim</a></h4>
-              <p class="description">At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque</p>
+              <img src="assets/img/portfolio/aws-logo2.jpg" class="img-fluid" alt="">
+              <h4 class="title"><a href="">AWS</a></h4>
+              <p class="description">EC2, ALB, ASG, Firewalls, Policies</p>
             </div>
           </div>
           <div class="col-lg-4 col-md-6" data-wow-delay="0.2s">
             <div class="icon-box">
-              <div class="icon"><i class="bi bi-clock" style="color: #4680ff;"></i></div>
-              <h4 class="title"><a href="">Eiusmod Tempor</a></h4>
-              <p class="description">Et harum quidem rerum facilis est et expedita distinctio. Nam libero tempore, cum soluta nobis est eligendi</p>
+              <img src="assets/img/portfolio/dynamodb.png" class="img-fluid" alt="">
+              <h4 class="title"><a href="">DynamoDB NoSQL Database</a></h4>
+              <p class="description">DynamoDB stores data for dynamic retreival.</p>
             </div>
           </div>
+          <div class="col-lg-4 col-md-6" data-wow-delay="0.1s">
+            <div class="icon-box">
+              <img src="assets/img/portfolio/lambda-logo.png" class="img-fluid" alt="">
+              <h4 class="title"><a href="">Serverless</a></h4>
+              <p class="description">Event Driven Architecture</p>
+            </div>
+          </div>
+          <div class="col-lg-4 col-md-6" data-wow-delay="0.1s">
+            <div class="icon-box">
+              <img src="assets/img/portfolio/python-logo.png" class="img-fluid" alt="">
+              <h4 class="title"><a href="">Programming</a></h4>
+              <p class="description">Python.</p>
+            </div>
+          </div>
+
+          <div class="col-lg-4 col-md-6" data-wow-delay="0.2s">
+            <div class="icon-box">
+              <img src="assets/img/portfolio/flask-logo.png" class="img-fluid" alt="">
+              <h4 class="title"><a href="">Flask</a></h4>
+              <p class="description">Full Stack</p>
+            </div>
         </div>
 
       </div>
     </section><!-- End Services Section -->
 
-    <!-- ======= Portfolio Section ======= -->
-    <section id="portfolio" class="portfolio">
-      <div class="container">
-
-        <div class="section-title">
-          <h2>Tech Stack</h2>
-          <p>Each tool has played a role in my past work projects.</p>
-        </div>
-
-        <div class="row">
-          <div class="col-lg-12 d-flex justify-content-center">
-            <ul id="portfolio-flters">
-              <li>All</li>
-              <li data-filter=".filter-app">Compute</li>
-              <li data-filter=".filter-card">Storage</li>
-              <li data-filter=".filter-web">Deployment</li>
-            </ul>
-          </div>
-        </div>
-
-        <div class="row portfolio-container">
-
-          <div class="col-lg-4 col-md-6 portfolio-item filter-app">
-            <div class="portfolio-wrap">
-              <img src="assets/img/portfolio/docker-logo.png" class="img-fluid" alt="">
-              <div class="portfolio-info">
-                <h4>Containerization</h4>
-                <p>In this project, I used Docker to create separate containers inside my server to handle both the Pipeline, and Web Hosting in a single VM.</p>
-              </div>
-            </div>
-          </div>
-
-
-
-          <div class="col-lg-4 col-md-6 portfolio-item filter-app">
-            <div class="portfolio-wrap">
-              <img src="assets/img/portfolio/terraform-logo.svg" class="img-fluid" alt="">
-              <div class="portfolio-info">
-                <h4>Infrastructure as Code</h4>
-                <p>Terraform</p>
-                <div class="portfolio-links">
-                  <a href="assets/img/portfolio/portfolio-3.jpg" data-gallery="portfolioGallery" class="portfolio-lightbox" title="App 2"><i class="bx bx-plus"></i></a>
-                  <a href="portfolio-details.html" title="More Details"><i class="bx bx-link"></i></a>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <div class="col-lg-4 col-md-6 portfolio-item filter-web">
-            <div class="portfolio-wrap">
-              <img src="assets/img/portfolio/jenkins-logo.png" class="img-fluid" alt="">
-              <div class="portfolio-info">
-                <h4>CI/CD</h4>
-                <p>Jenkins</p>
-              </div>
-            </div>
-          </div>
-
-          <div class="col-lg-4 col-md-6 portfolio-item filter-card">
-            <div class="portfolio-wrap">
-              <img src="assets/img/portfolio/apache-logo.png" class="img-fluid" alt="">
-              <div class="portfolio-info">
-                <h4>Web Hosting</h4>
-                <p>Apache Hosts our site for free.</p>
-                
-              </div>
-            </div>
-          </div>
-
-          <div class="col-lg-4 col-md-6 portfolio-item filter-web">
-            <div class="portfolio-wrap">
-              <img src="assets/img/portfolio/aws-logo2.jpg" class="img-fluid" alt="">
-              <div class="portfolio-info">
-                <h4>AWS</h4>
-                <p>EC2, ALB, ASG, Firewalls, Policies</p>
-              
-              </div>
-            </div>
-          </div>
-
-          <div class="col-lg-4 col-md-6 portfolio-item filter-app">
-            <div class="portfolio-wrap">
-              <img src="assets/img/portfolio/dynamodb.png" class="img-fluid" alt="">
-              <div class="portfolio-info">
-                <h4>NoSQL Database</h4>
-                <p>DynamoDB stores data for dynamic retreival.</p>
-              </div>
-            </div>
-          </div>
-
-          <div class="col-lg-4 col-md-6 portfolio-item filter-card">
-            <div class="portfolio-wrap">
-              <img src="assets/img/portfolio/lambda-logo.png" class="img-fluid" alt="">
-              <div class="portfolio-info">
-                <h4>Serverless</h4>
-                <p>Event Driven Architecture</p>
-                
-              </div>
-            </div>
-          </div>
-
-          <div class="col-lg-4 col-md-6 portfolio-item filter-card">
-            <div class="portfolio-wrap">
-              <img src="assets/img/portfolio/python-logo.png" class="img-fluid" alt="">
-              <div class="portfolio-info">
-                <h4>Programming</h4>
-                <p>Python</p>
-                
-              </div>
-            </div>
-          </div>
-
-          <div class="col-lg-4 col-md-6 portfolio-item filter-web">
-            <div class="portfolio-wrap">
-              <img src="assets/img/portfolio/flask-logo.png" class="img-fluid" alt="">
-              <div class="portfolio-info">
-                <h4>Flask</h4>
-                <p>Full Stack</p>
-  
-              </div>
-            </div>
-          </div>
-
-        </div>
-
-      </div>
-    </section><!-- End Portfolio Section -->
+    
 
     
 <!-- ======= Team Section ======= -->
