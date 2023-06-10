@@ -72,7 +72,7 @@
         <div class="col-lg-6 pt-4 pt-lg-0 order-2 order-lg-1 d-flex flex-column justify-content-center">
           <h1>Benjamin Davis</h1>
           <h2>Welcome to a guided tour of this site's Cloud Backend Infrastructure.</h2>
-          <div><a href="#about" class="btn-get-started scrollto">Portfolio Projects</a></div>
+          <!--<div><a href="#about" class="btn-get-started scrollto">Portfolio Projects</a></div>-->
         </div>
         <div class="col-lg-6 order-1 order-lg-2 hero-img">
           <img src="assets/img/hero-img.png" class="img-fluid" alt="">
@@ -89,56 +89,14 @@
 
     <div class="row">
       <div class="col-xl-6 col-lg-6 d-flex justify-content-center align-items-stretch position-relative order-lg-1 order-xl-1 order-2">
-      <div class="code-container">
-        <div class="code-banner">X-ray - Python</div>
-        <pre>
-          <code class="language-python">
-import requests
-import base64
-import boto3
-            
-def lambda_handler(event, context):
-    # Scrape the webpage
-    url = "https://api.github.com/repos/*"
-    response = requests.get(url)
-                
-    if response.status_code == 200:
-        page_text = response.json()["content"]
-        decoded_bytes = base64.b64decode(page_text)
-        scraped_text = decoded_bytes.decode(errors='replace')
-            
-        print("Scraped webpage text:")
-        print(scraped_text)
-                    
-        # Put the scraped text into DynamoDB
-        dynamodb = boto3.resource('dynamodb', region_name='us-east-1')
-        table = dynamodb.Table('x-ray_table')
-            
-        response = table.put_item(
-            Item={
-                'file_path': url,
-                'file_content': scraped_text
-            }
-        )
-            
-        return {
-            'statusCode': 200,
-            'body': 'Item added successfully to DynamoDB table.'
-        }
-    else:
-        return {
-            'statusCode': response.status_code,
-            'body': 'Failed to scrape webpage.'
-        }</code>
-        </pre>
-      </div>  
+        <img src="assets/img/codedeploy.png" height="400" width="700" class="img-fluid border" alt="Pipeline">
       </div>
 
       <div class="col-xl-6 col-lg-6 icon-boxes d-flex flex-column align-items-stretch justify-content-center py-6 px-lg-6 order-lg-2 order-xl-2 order-1">
-        <h3>'X-ray App - A Full Stack Python REST API'</h3>
+        <h3>Automated Cloud Infrastructure Blueprint</h3>
 
         <div class="icon-box">
-          <div class="icon"><i class="bx bx-atom"></i></div>
+          <div class="icon"><i class="bx bx-paste"></i></div>
           <h4 class="title"><a href="">Dynamic Content</a></h4>
           <p class="description">The Xray-App is a two part web app that scrapes repositories, stores the data in DynamoDB, then displays the data here as HTML using Python Flask.</p>
         </div>
@@ -148,8 +106,7 @@ def lambda_handler(event, context):
 
         <p>As a seasoned professional in this field, I realized that traditional portfolio websites were limited in demonstrating the backend aspects of my work. So, I set out to create a solution that allows visitors to delve into my infrastructure code and gain a deeper understanding of my expertise.</p>
 
-        <p>My primary motivation behind building the X-ray app was to address the need for a platform that highlights the most recent versions of my infrastructure files.</p>
-        <p>With this app, I wanted to ensure that potential employers or clients can explore my code and stay updated on the latest developments in my projects. By dynamically pulling the code directly from my repositories, I eliminate the hassle of manually updating snippets and ensure that viewers always have access to the most up-to-date information.</p>
+        <div><a href="pipeline1.html" class="btn-get-started scrollto">See More</a></div><div><a href="https://github.com/benjamindavisdc/may23pipeline01.git" class="btn-see-git scrollto">Github</a></div>
 
         
 
@@ -165,13 +122,19 @@ def lambda_handler(event, context):
 
     <div class="row">
       <div class="col-xl-6 col-lg-6 icon-boxes d-flex flex-column align-items-stretch justify-content-center py-5 px-lg-5">
-        <h3>DevOps</h3>
-        <p>Another critical aspect I wanted to address with the X-ray app was the ability to iterate rapidly on new changes to my infrastructure. I found it cumbersome and time-consuming to manually update code snippets on my portfolio website whenever I made updates to my projects. To overcome this hurdle, the X-ray app leverages automation to retrieve the latest code from my repositories. This way, I can focus on refining and improving my infrastructure without worrying about keeping the website in sync.</p>
+        <h3>CI/CD Container Deployment Pipeline</h3>
+        <div class="icon-box">
+          <div class="icon"><i class="bx bx-paste"></i></div>
+          <h4 class="title"><a href="">Dynamic Content</a></h4>
+          <p class="description">The Xray-App is a two part web app that scrapes repositories, stores the data in DynamoDB, then displays the data here as HTML using Python Flask.</p>
+        </div>
 
-          <p>Embracing Agility
-          By building the X-ray app, I've created a platform that aligns with my development philosophy of embracing agility. It allows me to showcase my backend scripts, like Dockerfiles and Jenkinsfiles, in an organized manner, enabling visitors to navigate and understand my deployment processes effortlessly. The app provides an interactive and user-friendly experience, giving viewers a glimpse into the inner workings of my projects.</p>
-          
-          <p>In summary, the X-ray app is my solution for showcasing my DevOps skills in infrastructure deployment. It ensures that viewers have access to the most recent versions of my infrastructure files, while also enabling me to iterate rapidly on new changes. By offering this transparency into my work, I aim to provide potential employers and clients with a comprehensive understanding of my expertise and commitment to delivering robust and scalable infrastructure solutions.</p>
+
+        <p>The X-ray app is an exciting project I developed to showcase my DevOps skills in infrastructure deployment. </p>
+
+        <p>As a seasoned professional in this field, I realized that traditional portfolio websites were limited in demonstrating the backend aspects of my work. So, I set out to create a solution that allows visitors to delve into my infrastructure code and gain a deeper understanding of my expertise.</p>
+
+        <div><a href="pipeline2.html" class="btn-get-started scrollto">See More</a></div><div><a href="https://github.com/benjamindavisdc/may23pipeline01.git" class="btn-see-git scrollto">Github</a></div>
       </div>
 
       <div class="col-xl-5 col-lg-6 d-flex justify-content-center align-items-stretch position-relative">
@@ -182,7 +145,38 @@ def lambda_handler(event, context):
   </div>
 </section><!-- End About Section -->
 
-    
+<!-- ======= About Section 3 ======= -->
+<section id="about" class="about">
+  <div class="container">
+
+    <div class="row">
+      <div class="col-xl-6 col-lg-6 d-flex justify-content-center align-items-stretch position-relative order-lg-1 order-xl-1 order-2">
+        <img src="assets/img/dbsample.png" height="400" width="700" class="img-fluid border" alt="Pipeline">
+      </div>
+
+      <div class="col-xl-6 col-lg-6 icon-boxes d-flex flex-column align-items-stretch justify-content-center py-6 px-lg-6 order-lg-2 order-xl-2 order-1">
+        <h3>X-ray App - A Full Stack Python REST API</h3>
+
+        <div class="icon-box">
+          <div class="icon"><i class="bx bx-atom"></i></div>
+          <h4 class="title"><a href="">Dynamic Content</a></h4>
+          <p class="description">The Xray-App is a two part web app that scrapes repositories, stores the data in DynamoDB, then displays the data here as HTML using Python Flask.</p>
+        </div>
+
+
+        <p>The X-ray app is an exciting project I developed to showcase my DevOps skills in infrastructure deployment. </p>
+
+        <p>As a seasoned professional in this field, I realized that traditional portfolio websites were limited in demonstrating the backend aspects of my work. So, I set out to create a solution that allows visitors to delve into my infrastructure code and gain a deeper understanding of my expertise.</p>
+
+        <div><a href="pipeline3.html" class="btn-get-started scrollto">See More</a></div><div><a href="https://github.com/benjamindavisdc/may23pipeline01.git" class="btn-see-git scrollto">Github</a></div>
+
+        
+
+      </div>
+    </div>
+
+  </div>
+</section><!-- End About Section -->    
 
     <!-- ======= Services Section ======= -->
     <section id="white" class="services section-bg">

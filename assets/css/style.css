@@ -392,6 +392,46 @@ pre {
   background: #ebf7fc;
 }
 
+#blue .btn-get-started {
+  font-family: "Dosis", sans-serif;
+  font-weight: 500;
+  font-size: 16px;
+  letter-spacing: 1px;
+  display: inline-block;
+  padding: 8px 28px;
+  border-radius: 3px;
+  transition: 0.5s;
+  margin-top: 25px;
+  color: #fff;
+  background: #49b5e7;
+  text-transform: uppercase;
+}
+
+#blue .btn-get-started:hover {
+  background: #76c7ed;
+}
+
+#blue .btn-see-git {
+  font-family: "Dosis", sans-serif;
+  font-weight: 500;
+  font-size: 16px;
+  letter-spacing: 1px;
+  display: inline-block;
+  padding: 8px 28px;
+  border-radius: 3px;
+  transition: 0.5s;
+  margin-top: 25px;
+  color: #fff;
+  background: #000;
+  text-transform: uppercase;
+}
+
+#blue .btn-see-git:hover {
+  background: #000;
+}
+
+
+
 /*--------------------------------------------------------------
 # White Section
 --------------------------------------------------------------*/
@@ -399,6 +439,45 @@ pre {
 #white {
   background: #fff;
 }
+
+#white .btn-get-started {
+  font-family: "Dosis", sans-serif;
+  font-weight: 500;
+  font-size: 16px;
+  letter-spacing: 1px;
+  display: inline-block;
+  padding: 8px 28px;
+  border-radius: 3px;
+  transition: 0.5s;
+  margin-top: 25px;
+  color: #fff;
+  background: #49b5e7;
+  text-transform: uppercase;
+}
+
+#white .btn-get-started:hover {
+  background: #76c7ed;
+}
+
+#white .btn-see-git {
+  font-family: "Dosis", sans-serif;
+  font-weight: 500;
+  font-size: 16px;
+  letter-spacing: 1px;
+  display: inline-block;
+  padding: 8px 28px;
+  border-radius: 3px;
+  transition: 0.5s;
+  margin-top: 25px;
+  color: #fff;
+  background: #000;
+  text-transform: uppercase;
+}
+
+#white .btn-see-git:hover {
+  background: #000;
+}
+
 /*--------------------------------------------------------------
 # Hero Section
 --------------------------------------------------------------*/
@@ -472,6 +551,49 @@ pre {
     width: 80%;
   }
 }
+
+/*--------------------------------------------------------------
+# About Button
+--------------------------------------------------------------*/
+#about .btn-get-started {
+  font-family: "Dosis", sans-serif;
+  font-weight: 500;
+  font-size: 16px;
+  letter-spacing: 1px;
+  display: inline-block;
+  padding: 8px 28px;
+  border-radius: 3px;
+  transition: 0.5s;
+  margin-top: 25px;
+  color: #fff;
+  background: #49b5e7;
+  text-transform: uppercase;
+}
+
+#about .btn-get-started:hover {
+  background: #76c7ed;
+}
+
+#about .btn-see-git {
+  font-family: "Dosis", sans-serif;
+  font-weight: 500;
+  font-size: 16px;
+  letter-spacing: 1px;
+  display: inline-block;
+  padding: 8px 28px;
+  border-radius: 3px;
+  transition: 0.5s;
+  margin-top: 25px;
+  color: #fff;
+  background: #000;
+  text-transform: uppercase;
+}
+
+#about .btn-see-git:hover {
+  background: #000;
+}
+
+
 
 /*--------------------------------------------------------------
 # Sections General
