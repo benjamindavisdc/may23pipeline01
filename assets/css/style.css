@@ -363,7 +363,7 @@ h6 {
 
 .code-wrapper code {
   display: block;
-  white-space: pre;
+  white-space: pre-wrap;
   overflow-x: auto;
   padding-left: 10px;
   padding-right: 10px;
