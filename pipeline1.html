@@ -182,13 +182,8 @@ resource "aws_instance" "public_instance" {
 
         <p>The first step is to build an instance and set up the basic infrastructure.</p>
         <p>This file contains the region and VPC info for my entire project,</p>
-
         <p>a database which will be used for the full-stack X-Ray app's code in part 3,</p>
         <p>and the server runs my bootstrap script which will configure the servers in part 2.</p>
-
-        
-
-        
 
       </div>
     </div>
@@ -210,7 +205,6 @@ resource "aws_instance" "public_instance" {
           <p class="description">When working with multiple servers, we can specify security rules for each one.</p>
         </div>
 
-        <p></p>
         <p>AWS also manages my SSH keys, which allow me to remotely troubleshoot my servers if there's a problem with the bootstrap script.</p>
 
           
@@ -536,12 +530,7 @@ resource "aws_iam_role_policy_attachment" "xray-lambda" {
         <p>The lambda function is the first half of the X-Ray app. It will scrape my repositories and store the data in the database made in Main.tf.</p>
         <p>It's essential that the function be given access to the internet so that it can scrape the data it needs.</p>
         <p>And Lambda must have the necessary permissions to write to the database so that it can store my data for retreival.</p>
-        
-
-        
-
-        
-
+      
       </div>
     </div>
 
