@@ -54,8 +54,8 @@
         <li><a class="nav-link scrollto " href="index.html">Home</a></li>
         <li><a class="nav-link scrollto" href="pipeline1.html">1. Automated Infrastructure Blueprint</a></li>
         <li><a class="nav-link scrollto" href="pipeline2.html">2. CI/CD Container Deployment</a></li>
-        <li><a class="nav-link scrollto " href="pipeline3.html">3. Serverless Datafeed</a></li>
-        <li><a class="nav-link scrollto" href="#contact">Contact</a></li>
+        <li><a class="nav-link scrollto" href="pipeline3.html">3. Serverless Datafeed</a></li>
+        <li><a class="nav-link scrollto active" href="#contact">Contact</a></li>
       </ul>
       <i class="bi bi-list mobile-nav-toggle"></i>
     </nav><!-- .navbar -->
@@ -69,12 +69,12 @@
     <div class="container">
       <div class="row">
         <div class="col-lg-6 pt-4 pt-lg-0 order-2 order-lg-1 d-flex flex-column justify-content-center">
-          <h1>Serverless Datafeed Pipeline</h1>
-          <h2>Stay up to date on the latest info with Python and DynamoDB.</h2>
+          <h1>Automated Infrastructure Blueprint</h1>
+          <h2>See my master plan to build the backend for this site.</h2>
           
         </div>
         <div class="col-lg-6 order-1 order-lg-2 hero-img">
-          <img src="assets/img/dbsample.png" class="img-fluid border" alt="">
+          <img src="assets/img/jenkinsdeploy.png" class="img-fluid border" alt="">
         </div>
       </div>
     </div>
@@ -89,67 +89,104 @@
     <div class="row">
       <div class="col-xl-6 col-lg-6 d-flex justify-content-center align-items-stretch position-relative order-lg-1 order-xl-1 order-2">
       <div class="code-container">
-        <div class="code-banner">X-ray - Python</div>
+        <div class="code-banner">X-Ray - HCL</div>
         <pre>
-          <code class="language-python">
-import requests
-import base64
-import boto3
-            
-def lambda_handler(event, context):
-    # Scrape the webpage
-    url = "https://api.github.com/repos/*"
-    response = requests.get(url)
-                
-    if response.status_code == 200:
-        page_text = response.json()["content"]
-        decoded_bytes = base64.b64decode(page_text)
-        scraped_text = decoded_bytes.decode(errors='replace')
-            
-        print("Scraped webpage text:")
-        print(scraped_text)
-                    
-        # Put the scraped text into DynamoDB
-        dynamodb = boto3.resource('dynamodb', region_name='us-east-1')
-        table = dynamodb.Table('x-ray_table')
-            
-        response = table.put_item(
-            Item={
-                'file_path': url,
-                'file_content': scraped_text
-            }
-        )
-            
-        return {
-            'statusCode': 200,
-            'body': 'Item added successfully to DynamoDB table.'
-        }
-    else:
-        return {
-            'statusCode': response.status_code,
-            'body': 'Failed to scrape webpage.'
-        }</code>
-        </pre><p>This code is live from my repo at github.com/lambdaRepoScrapers/jenkinsf_scraper.py</p>
+          <code class="language-hcl">
+provider "aws" {
+  region = "us-east-1"
+}
+terraform {
+  backend "s3" {
+    bucket = "terraformstateprotag"
+    key    = "terraform.tfstate"
+    region = "us-east-1"
+    #    dynamodb_table = "protag_state_locking"
+  }
+}
+
+resource "aws_dynamodb_table" "github_files" {
+  name           = "x-ray_table"
+  billing_mode   = "PROVISIONED"
+  read_capacity  = 5
+  write_capacity = 5
+  attribute {
+    name = "file_path"
+    type = "S"
+  }
+
+  attribute {
+    name = "file_content"
+    type = "S"
+  }
+
+  key_schema {
+    attribute_name = "file_path"
+    key_type       = "HASH"
+  }
+
+  key_schema {
+    attribute_name = "file_content"
+    key_type       = "RANGE"
+  }
+}
+
+
+module "vpc" {
+  source = "terraform-aws-modules/vpc/aws"
+
+  name = "my-vpc"
+  cidr = "10.0.0.0/16"
+
+  azs                     = ["us-east-1a", "us-east-1b"]
+  public_subnets          = ["10.0.1.0/24"]
+  map_public_ip_on_launch = true
+  private_subnets         = ["10.0.2.0/24"]
+}
+
+resource "aws_instance" "public_instance" {
+  ami           = var.ami_id
+  instance_type = var.public_instance_type
+
+  user_data = <<-EOF
+    #!/bin/bash
+    curl -sSfL -o bootstrap.sh bootstrap.sh
+    chmod +x bootstrap.sh
+    ./bootstrap.sh
+  EOF
+
+  user_data_replace_on_change = true
+
+  subnet_id              = module.vpc.public_subnets[0]
+  key_name               = aws_key_pair.protag2-key.id
+  vpc_security_group_ids = [aws_security_group.public_sg.id, 
+                            aws_security_group.public_sg2.id, 
+                            aws_security_group.public_sg3.id]
+
+  tags = {
+    Name = "Public Instance"
+  }
+}</code>
+        </pre><p>This code is live from my AWS CodeCommit Repo.</p>
       </div>  
       
       </div>
 
       <div class="col-xl-6 col-lg-6 icon-boxes d-flex flex-column align-items-stretch justify-content-center py-6 px-lg-6 order-lg-2 order-xl-2 order-1">
-        <h3>'X-ray App - A Full Stack Python REST API'</h3>
+        <h3>Main.tf - Builds my Servers and database</h3>
 
         <div class="icon-box">
-          <div class="icon"><i class="bx bx-atom"></i></div>
-          <h4 class="title"><a href="">Dynamic Content</a></h4>
-          <p class="description">The Xray-App is a two part web app that scrapes repositories, stores the data in DynamoDB, then displays the data here as HTML using Python Flask.</p>
+          <div class="icon"><i class="bx bx-paint-roll"></i></div>
+          <h4 class="title"><a href="">Infrastructure as Code</a></h4>
+          <p class="description">Terraform allows me to keep track of all the infrastructure I have provisioned, and lets me destroy, move, or duplicate the project whenver necessary.</p>
         </div>
 
+        <p>The first step is to build an instance and set up the basic infrastructure.</p>
+        <p>This file contains the region and VPC info for my entire project,</p>
 
-        <p>The X-ray app is an exciting project I developed to showcase my DevOps skills in infrastructure deployment. </p>
+        <p>a database which will be used for the full-stack X-Ray app's code in part 3,</p>
+        <p>and the server runs my bootstrap script which will configure the servers in part 2.</p>
 
-        <p>As a seasoned professional in this field, I realized that traditional portfolio websites were limited in demonstrating the backend aspects of my work. So, I set out to create a solution that allows visitors to delve into my infrastructure code and gain a deeper understanding of my expertise.</p>
-
-        <p>My primary motivation behind building the X-ray app was to address the need for a platform that highlights the most recent versions of my infrastructure files.</p>
-        <p>With this app, I wanted to ensure that potential employers or clients can explore my code and stay updated on the latest developments in my projects. By dynamically pulling the code directly from my repositories, I eliminate the hassle of manually updating snippets and ensure that viewers always have access to the most up-to-date information.</p>
+        
 
         
 
@@ -164,24 +201,352 @@ def lambda_handler(event, context):
   <div class="container">
 
     <div class="row">
-      <div class="col-xl-7 col-lg-6 icon-boxes d-flex flex-column align-items-stretch justify-content-center py-5 px-lg-5">
-        <h3>DevOps</h3>
-        <p>Another critical aspect I wanted to address with the X-ray app was the ability to iterate rapidly on new changes to my infrastructure. I found it cumbersome and time-consuming to manually update code snippets on my portfolio website whenever I made updates to my projects. To overcome this hurdle, the X-ray app leverages automation to retrieve the latest code from my repositories. This way, I can focus on refining and improving my infrastructure without worrying about keeping the website in sync.</p>
+      <div class="col-xl-6 col-lg-6 icon-boxes d-flex flex-column align-items-stretch justify-content-center py-5 px-lg-5">
+        <h3>SG.tf - Builds my security groups and SSH Keys</h3>
 
-          <p>Embracing Agility
-          By building the X-ray app, I've created a platform that aligns with my development philosophy of embracing agility. It allows me to showcase my backend scripts, like Dockerfiles and Jenkinsfiles, in an organized manner, enabling visitors to navigate and understand my deployment processes effortlessly. The app provides an interactive and user-friendly experience, giving viewers a glimpse into the inner workings of my projects.</p>
+        <div class="icon-box">
+          <div class="icon"><i class="bx bx-key"></i></div>
+          <h4 class="title"><a href="">Authorized Access Only</a></h4>
+          <p class="description">When working with multiple servers, we can specify security rules for each one.</p>
+        </div>
+
+        <p></p>
+        <p>AWS also manages my SSH keys, which allow me to remotely troubleshoot my servers if there's a problem with the bootstrap script.</p>
+
           
-          <p>In summary, the X-ray app is my solution for showcasing my DevOps skills in infrastructure deployment. It ensures that viewers have access to the most recent versions of my infrastructure files, while also enabling me to iterate rapidly on new changes. By offering this transparency into my work, I aim to provide potential employers and clients with a comprehensive understanding of my expertise and commitment to delivering robust and scalable infrastructure solutions.</p>
       </div>
 
-      <div class="col-xl-5 col-lg-6 d-flex justify-content-center align-items-stretch position-relative">
-        <img src="https://www.expresssewer.com/hubfs/different%20types%20of%20plumbing%20pipes.jpeg" height="400" width="700" class="img-fluid" alt="Pipes Image">
+      <div class="col-xl-6 col-lg-6 d-flex justify-content-center align-items-stretch position-relative">
+        <div class="code-container">
+          <div class="code-banner">X-Ray - 2HCL</div>
+          <pre>
+            <code class="language-hcl">
+resource "aws_security_group" "public_sg" {
+  name        = "public_sg1"
+  description = "Allow web traffic"
+  vpc_id      = module.vpc.vpc_id
+
+  ingress {
+    from_port   = 8080
+    to_port     = 8080
+    protocol    = "tcp"
+    cidr_blocks = ["0.0.0.0/0"]
+
+  }
+
+  egress {
+    from_port        = 0
+    to_port          = 0
+    protocol         = "-1"
+    cidr_blocks      = ["0.0.0.0/0"]
+    ipv6_cidr_blocks = ["::/0"]
+  }
+
+  tags = {
+    Name = "allow_tcp"
+  }
+}
+
+resource "aws_security_group" "public_sg2" {
+  name        = "public_sg2"
+  description = "Allow ssh traffic"
+  vpc_id      = module.vpc.vpc_id
+
+  ingress {
+
+
+       description      = "SSH"
+       from_port        = 22
+       to_port          = 22
+       protocol         = "tcp"
+       cidr_blocks      = ["0.0.0.0/0"]
+  }
+
+  egress {
+    from_port        = 0
+    to_port          = 0
+    protocol         = "-1"
+    cidr_blocks      = ["0.0.0.0/0"]
+    ipv6_cidr_blocks = ["::/0"]
+  }
+
+  tags = {
+    Name = "allow_ssh"
+  }
+}
+
+resource "aws_security_group" "public_sg3" {
+  name        = "public_sg3"
+  description = "Allow http traffic"
+  vpc_id      = module.vpc.vpc_id
+
+  ingress {
+
+
+       description      = "HTTP"
+       from_port        = 80
+       to_port          = 80
+       protocol         = "tcp"
+       cidr_blocks      = ["0.0.0.0/0"]
+  }
+
+  egress {
+    from_port        = 0
+    to_port          = 0
+    protocol         = "-1"
+    cidr_blocks      = ["0.0.0.0/0"]
+    ipv6_cidr_blocks = ["::/0"]
+  }
+
+  tags = {
+    Name = "allow_httpd"
+  }
+}
+
+#private sg
+
+resource "aws_security_group" "private_sg" {
+  name        = "private_sg1"
+  description = "Allow TLS traffic"
+  vpc_id      = module.vpc.vpc_id
+
+  ingress {
+    description = "TLs from VPC"
+    from_port   = 443
+    to_port     = 443
+    protocol    = "tcp"
+    cidr_blocks = ["10.0.0.0/16"]
+
+  }
+
+  egress {
+    from_port        = 0
+    to_port          = 0
+    protocol         = "-1"
+    cidr_blocks      = ["0.0.0.0/0"]
+    ipv6_cidr_blocks = ["::/0"]
+  }
+
+  tags = {
+    Name = "allow_tls"
+  }
+}
+
+resource "aws_key_pair" "protag2-key" {
+  key_name   = "protag2-key"
+  public_key = file("protag2-key.pub")
+}
+            </code>
+          </pre><p>This code is live from my AWS CodeCommit Repo.</p>
+        </div>  
+        </div>
       </div>
     </div>
 
   </div>
 </section><!-- End About Section -->
 
+<!-- ======= About Section 3 ======= -->
+<section id="about" class="about">
+  <div class="container">
+
+    <div class="row">
+      <div class="col-xl-6 col-lg-6 d-flex justify-content-center align-items-stretch position-relative order-lg-1 order-xl-1 order-2">
+      <div class="code-container">
+        <div class="code-banner">X-Ray - HCL</div>
+        <pre>
+          <code class="language-hcl">
+# Bucket
+resource "aws_s3_bucket" "lambda_bucket_pipeline2" {
+  bucket = "lambda-bucketpipeline2bd"
+
+  force_destroy = true
+}
+
+#bucket code uploader
+resource "aws_s3_object" "lambda_code" {
+  bucket = aws_s3_bucket.lambda_bucket_pipeline2.id
+  key    = "xray.zip"
+  source = "${path.module}/venv/xray.zip"
+}
+
+# Lambda Artifact
+data "archive_file" "xray-lambda" {
+  type = "zip"
+
+  source_dir  = "${path.module}/xray"
+  output_path = "${path.module}/xray.zip"
+}
+
+resource "aws_s3_object" "lambda-xray" {
+  bucket = aws_s3_bucket.lambda_bucket_pipeline2.id
+
+  key    = "xray.zip"
+  source = data.archive_file.xray-lambda.output_path
+
+  etag = filemd5(data.archive_file.xray-lambda.output_path)
+}
+
+data "aws_s3_bucket_object" "layer_zip" {
+  bucket = "lambda-bucketpipeline2bd"
+  key    = "site-packages-downgrade.zip"
+}
+
+# Create the Lambda layer
+resource "aws_lambda_layer_version" "my_layer" {
+  layer_name = "Site-package-downgrade"
+  compatible_runtimes = ["python3.9"]
+}
+
+# Lambda Function
+resource "aws_lambda_function" "xray" {
+  function_name = "xray-lambda"
+
+  s3_bucket = aws_s3_bucket.lambda_bucket_pipeline2.id
+  s3_key    = aws_s3_object.lambda-xray.key
+
+  layers = [ aws_lambda_layer_version.my_layer.arn ]
+
+  runtime = "python3.10"
+  handler = "jenkinsf_scraper.py.lambda_handler"
+  timeout = 15
+
+  event_source_mapping {
+    event_source_arn = "arn:aws:codecommit:us-east-1:<AWS>:Pipeline2"
+    batch_size       = 10
+
+  source_code_hash = data.arcdive_file.xray-lambda.output_base64sha256
+
+  role = aws_iam_role.lambda-xray.arn
+
+  vpc_config {
+    subnet_ids         = module.vpc.public_subnets
+    security_group_ids = [aws_security_group.xray_lambda.id]
+  }
+}
+
+# Lambda Function SG
+resource "aws_security_group" "xray_lambda" {
+  name        = "Xray Lambda"
+  description = "Allow internet access"
+  vpc_id      = module.vpc.vpc_id
+
+
+  ingress {
+    description      = "HTTP access"
+    from_port        = 80
+    to_port          = 80
+    protocol         = "tcp"
+    cidr_blocks      = ["10.0.0.0/16"]
+  }
+
+egress {
+  from_port        = 443
+  to_port          = 443
+  protocol         = "tcp"
+  cidr_blocks      = ["0.0.0.0/0"]
+  ipv6_cidr_blocks = ["::/0"]
+}
+
+  egress {
+    from_port        = 0
+    to_port          = 0
+    protocol         = "-1"
+    cidr_blocks      = ["0.0.0.0/0"]
+    ipv6_cidr_blocks = ["::/0"]
+  }
+  tags = {
+    Name = "xray-lambda"
+  }
+}
+
+
+# IAM Role
+resource "aws_iam_role" "lambda-xray" {
+  name = "xray_lambda"
+
+  assume_role_policy = jsonencode({
+    Version = "2012-10-17"
+    Statement = [{
+      Action = "sts:AssumeRole"
+      Effect = "Allow"
+      Sid    = ""
+      Principal = {
+        Service = "lambda.amazonaws.com"
+      }
+      }
+    ]
+  })
+}
+
+resource "aws_iam_role_policy_attachment" "xray_lambda_execute" {
+  role       = aws_iam_role.lambda-xray.name
+  policy_arn = "arn:aws:iam::aws:policy/service-role/
+                AWSLambdaBasicExecutionRole"
+}
+
+# Lambda policy
+resource "aws_iam_policy" "xray-lambda" {
+  name        = "xray-lambda"
+  description = "Xray lambda"
+
+  policy = &lt;&lt;EOF
+{
+  "Version": "2012-10-17",
+  "Statement": [
+    {
+      "Action": [
+        "ec2:CreateNetworkInterface",
+        "ec2:DescribeNetworkInterfaces",
+        "ec2:DeleteNetworkInterface",
+        "ec2:DescribeSecurityGroups",
+        "ec2:DescribeSubnets",
+        "ec2:DescribeVpcs",
+        "dynamodb:PutItem",
+        "dynamodb:UpdateItem",
+        "dynamodb:DeleteItem"
+      ],
+      "Effect": "Allow",
+      "Resource": "*"
+    }
+  ]
+}
+EOF
+}
+
+resource "aws_iam_role_policy_attachment" "xray-lambda" {
+  role       = aws_iam_role.lambda-xray.name
+  policy_arn = aws_iam_policy.xray-lambda.arn
+}</code>
+        </pre><p>This code is live from my AWS CodeCommit Repo.</p>
+      </div>  
+      
+      </div>
+
+      <div class="col-xl-6 col-lg-6 icon-boxes d-flex flex-column align-items-stretch justify-content-center py-6 px-lg-6 order-lg-2 order-xl-2 order-1">
+        <h3>Lambda.tf - Builds my Lambda function</h3>
+
+        <div class="icon-box">
+          <div class="icon"><i class="bx bx-paint-roll"></i></div>
+          <h4 class="title"><a href="">Event Driven Architecture</a></h4>
+          <p class="description">Every time my source code is updated, Lambda will update my database.</p>
+        </div>
+
+        <p>This program is a combination of AWS resources, and Python scripting. AWS creates the resources (the Lambda function and all of its dependencies) and Python tells it what to do.</p>
+        <p>The lambda function is the first half of the X-Ray app. It will scrape my repositories and store the data in the database made in Main.tf.</p>
+        <p>It's essential that the function be given access to the internet so that it can scrape the data it needs.</p>
+        <p>And Lambda must have the necessary permissions to write to the database so that it can store my data for retreival.</p>
+        
+
+        
+
+        
+
+      </div>
+    </div>
+
+  </div>
+</section><!-- End About 3 Section -->
 
   <main id="main">
     
