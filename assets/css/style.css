@@ -356,13 +356,14 @@ h6 {
   padding: 8px;
   text-align: left;
   width: 100%;
+
 }
 
 .code-wrapper {
   overflow-x: hidden;
   white-space: pre-wrap;
   overflow-wrap: break-word;
-
+  padding-top: 0;
 }
 
 .code-wrapper code {

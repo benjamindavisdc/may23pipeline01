@@ -69,8 +69,8 @@
     <div class="container">
       <div class="row">
         <div class="col-lg-6 pt-4 pt-lg-0 order-2 order-lg-1 d-flex flex-column justify-content-center">
-          <h1>Automated Infrastructure Blueprint</h1>
-          <h2>See my master plan to build the backend for this site.</h2>
+          <h1>CI/CD Container Deployment and Configuration</h1>
+          <h2>The site you are viewing is on an Apache container which recives updates from a linked Jenkins container. See how it works below.</h2>
           
         </div>
         <div class="col-lg-6 order-1 order-lg-2 hero-img">
@@ -89,9 +89,9 @@
     <div class="row">
       <div class="col-xl-6 col-lg-6 d-flex justify-content-center align-items-stretch position-relative order-lg-1 order-xl-1 order-2">
       <div class="code-container">
-        <div class="code-banner">X-Ray - HCL</div>
+        <div class="code-banner">X-Ray - Bash</div>
         <pre>
-          <code class="language-hcl">
+          <code class="language-bash">
             Phase 2
           </code>
         </pre><p> This code is live from my AWS CodeCommit Repo.</p>
@@ -100,12 +100,12 @@
       </div>
 
       <div class="col-xl-6 col-lg-6 icon-boxes d-flex flex-column align-items-stretch justify-content-center py-6 px-lg-6 order-lg-2 order-xl-2 order-1">
-        <h3>Main.tf - Builds my Servers and database</h3>
+        <h3>Bootstrap.sh - Configures our VM and Containers</h3>
 
         <div class="icon-box">
           <div class="icon"><i class="bx bx-paint-roll"></i></div>
-          <h4 class="title"><a href="">Infrastructure as Code</a></h4>
-          <p class="description">Terraform allows me to keep track of all the infrastructure I have provisioned, and lets me destroy, move, or duplicate the project whenver necessary.</p>
+          <h4 class="title"><a href="">Ubuntu Linux Userdata</a></h4>
+          <p class="description">Thanks to the fact I am running off a standard AMI, it's possible to reliably install whatever software I need through scripting.</p>
         </div>
 
         <p>The first step is to build an instance and set up the basic infrastructure.</p>
@@ -125,7 +125,7 @@
 
     <div class="row">
       <div class="col-xl-6 col-lg-6 icon-boxes d-flex flex-column align-items-stretch justify-content-center py-5 px-lg-5">
-        <h3>SG.tf - Builds my security groups and SSH Keys</h3>
+        <h3>Apache Dockerfile</h3>
 
         <div class="icon-box">
           <div class="icon"><i class="bx bx-key"></i></div>
@@ -140,12 +140,34 @@
 
       <div class="col-xl-6 col-lg-6 d-flex justify-content-center align-items-stretch position-relative">
         <div class="code-container">
-          <div class="code-banner">X-Ray - HCL</div>
+          <div class="code-banner">X-Ray - Docker</div>
           <pre>
-            <code class="language-hcl">
-              Phase 2
-            </code>
-          </pre><p> This code is live from my AWS CodeCommit Repo.</p>
+            <code class="language-docker">
+# Use the official Amazon Linux 2 as the base image
+FROM amazonlinux:2
+
+# Install Git to clone the repository
+RUN yum update -y && \
+    yum install -y git && \
+    yum clean all
+
+# Clone the repository into a temporary directory
+RUN git clone https://github.com/user/may23pipeline01 
+              /tmp/repository
+
+# Install Apache web server and other required packages
+RUN yum install -y httpd && \
+    yum clean all
+
+# Copy the contents from the cloned repository to the appropriate location
+RUN cp -R /tmp/repository/* /var/www/html/
+
+# Expose port 80 for incoming HTTP traffic
+EXPOSE 80
+
+# Start the Apache web server when the container launches
+CMD ["/usr/sbin/httpd", "-D", "FOREGROUND"]</code>
+          </pre><p> This code is live from my Github Repo.</p>
         </div>  
         </div>
       </div>
@@ -161,16 +183,37 @@
     <div class="row">
       <div class="col-xl-6 col-lg-6 d-flex justify-content-center align-items-stretch position-relative order-lg-1 order-xl-1 order-2">
       <div class="code-container">
-        <div class="code-banner">X-Ray - HCL</div>
+        <div class="code-banner">X-Ray - Docker</div>
         <pre>
-          <code class="language-hcl">Phase 2</code>
-        </pre><p> This code is live from my AWS CodeCommit Repo.</p>
+          <code class="language-docker">
+# Use the official Amazon Linux 2 as the base image
+FROM jenkins/jenkins:lts
+            
+# Switch to the root user
+USER root
+            
+# Install Java OpenJDK 11 and other required packages
+RUN apt-get update && \
+    apt-get install -y openjdk-11-jdk && \
+    rm -rf /var/lib/apt/lists/*
+            
+# Create a directory for the Jenkinsfile in the container
+RUN mkdir -p /var/jenkins
+            
+# Copy your existing Jenkinsfile to the container
+COPY Jenkinsfile /var/jenkins/Jenkinsfile
+            
+# Expose port 8080 for accessing the Jenkins server
+# Expose port 443 for git clone
+EXPOSE 443
+EXPOSE 8080</code>
+        </pre><p> This code is live from my github Repo.</p>
       </div>  
       
       </div>
 
       <div class="col-xl-6 col-lg-6 icon-boxes d-flex flex-column align-items-stretch justify-content-center py-6 px-lg-6 order-lg-2 order-xl-2 order-1">
-        <h3>Lambda.tf - Builds my Lambda function</h3>
+        <h3>Jenkins Dockerfile</h3>
 
         <div class="icon-box">
           <div class="icon"><i class="bx bx-paint-roll"></i></div>
@@ -196,7 +239,7 @@
 
     <div class="row">
       <div class="col-xl-6 col-lg-6 icon-boxes d-flex flex-column align-items-stretch justify-content-center py-5 px-lg-5">
-        <h3>buildspec.yml - Automated Deployment Script</h3>
+        <h3>Jenkinsfile for Web Deployment</h3>
 
         <div class="icon-box">
           <div class="icon"><i class="bx bx-file"></i></div>
@@ -212,12 +255,43 @@
       </div>
 
       <div class="col-xl-6 col-lg-6 d-flex justify-content-center align-items-stretch position-relative">
-        <div class="code-container">
-          <div class="code-banner">X-Ray - YAML</div>
+        <div class="code-container" >
+          <div class="code-banner" >X-Ray - Groovy</div>
           <pre>
-            <code class="language-yaml">
-Phase 2</code>
-          </pre><p> This code is live from my AWS CodeCommit Repo.</p>
+            <code class="language-groovy" >
+pipeline {
+agent any
+stages {
+    stage("Clone Git Repository") {
+        steps {
+            dir('temp_repo') {
+                git(
+                    url: "https://github.com/user/may23pipeline01.git",
+                    branch: "main"
+                )
+            }
+        }
+    }
+
+    stage('Copy Files') {
+        steps {
+            script {
+                sh '''
+                # Html site, doesn't need any packaging
+                docker cp temp_repo/. my-apache-container:/var/www/html/
+                '''
+            }
+        }
+    }
+
+    stage('Clean Up') {
+        steps {
+            sh 'rm -rf temp_repo'
+        }
+    }
+}
+}</code>
+          </pre><p> This code is live from my Github Repo.</p>
         </div>  
         </div>
       </div>
