@@ -72,6 +72,7 @@
         <div class="col-lg-6 pt-4 pt-lg-0 order-2 order-lg-1 d-flex flex-column justify-content-center">
           <h1>Cloud Engineer</h1>
           <h2>Welcome to a guided tour of this site's Cloud Backend Infrastructure.</h2>
+          <p><br>I built this site to show my skills as an AWS Certified Cloud Engineer. My project is composed of 3 distinct, automated pipelines that use many popular DevOps services to allow me to build, modify and duplicate my project with the push of a button.</p>
           <!--<div><a href="#about" class="btn-get-started scrollto">Portfolio Projects</a></div>-->
         </div>
         <div class="col-lg-6 order-1 order-lg-2 hero-img">
@@ -101,6 +102,7 @@
           <p class="description">The first step I went through when creating my site is making a plan for the Backend infrastructure.</p>
         </div>
 
+        <p>I used Terraform, AWS CodeCommit, AWS CodePipeline, and YAML scripting to create an infrastructure deployment pipeline.</p>
         <p>This blueprint contains my main.tf file, sg.tf, and lambda.tf files as well as SSH keys and other supporting files.</p>
 
         <p>The code is stored in a code repository on AWS and is configured to deploy automatically when updated. This folder is how I control my compute, database, security, and web app infrastrucutre.</p>
@@ -124,13 +126,11 @@
         <h3>CI/CD Container Deployment Pipeline</h3>
         <div class="icon-box">
           <div class="icon"><i class="bx bx-package"></i></div>
-          <h4 class="title"><a href="">Once the servers are deployed, they must be configured!</a></h4>
-          <p class="description">See the scripts I use to automate the configuration of my Linux servers. </p>
+          <h4 class="title"><a href="">After deploying my server, it needs to be configured to host containers.</a></h4>
+          <p class="description">I built bootstrap scripts, Dockerfiles, and Jenkinsfiles to automate important tasks:</p>
         </div>
         
-        <p>On deployment, scripts will:</p>
-        
-        <p>Install Docker, <br>Install Jenkins, <br>Install Apache, <br>Build a Docker Network, <br>Build a Jenkins Image and Container, <br>Build an Apache Image and Container, <br>Intialize Jenkins, <br>Initialize Apache, <br>Configure the Jenkins Pipeline job from a Jenkinsfile, <br>Deliver repo files to Apache web server directory.</p>
+        <p>> Install Docker, <br>> Install Jenkins, <br>> Install Apache, <br>> Build a Docker Network, <br>> Build a Jenkins Image and Container, <br>> Build an Apache Image and Container, <br>> Intialize Jenkins, <br>> Initialize Apache, <br>> Configure the Jenkins Pipeline job from a Jenkinsfile, <br>> Deliver repo files to Apache web server directory.</p>
 
 
         <div><a href="pipeline2.html" class="btn-get-started scrollto">See More</a>       <a href="https://github.com/benjamindavisdc/may23pipeline01.git" class="btn-see-git scrollto">Github</a></div>
@@ -162,8 +162,8 @@
           <p class="description">How do you show off your backend infrastructure over the internet? <br>With a unique full-stack app.</p>
         </div>
 
-
-        <p>The Xray-App is a two part web app that scrapes repositories, stores the data in DynamoDB, then displays the data here as HTML using Python Flask.</p>
+        <p>The final step is the most important! I built this site, along with a Python app to help me display all the backend code you will see here.</p>
+        <p>The Xray-App is a two part process that scrapes repositories, stores the data in DynamoDB, then displays the data here as HTML using Python Flask.</p>
 
         <p>I realized that traditional portfolio websites were limited in demonstrating the backend aspects of my work. So, I set out to create a solution that allows visitors to delve into my infrastructure code and gain a deeper understanding of my expertise.</p>
 
@@ -206,14 +206,14 @@
             <div class="icon-box">
               <img src="assets/img/portfolio/jenkins-logo.png" class="img-fluid" alt="">
               <h4 class="title"><a href=""> </a></h4>
-              <p class="description">Jenkins is a simple way to make sure my web server always stays up to date with the latest changes.</p>
+              <p class="description">I used Jenkins to make sure my web server always stays up to date with the latest changes.</p>
             </div>
           </div>
           <div class="col-lg-4 col-md-6" data-wow-delay="0.1s">
             <div class="icon-box">
               <img src="assets/img/portfolio/apache-logo.png" class="img-fluid" alt="">
               <h4 class="title"><a href="">  </a></h4>
-              <p class="description">Apache hosts my site and can be easily managed through bash scripts.</p>
+              <p class="description">I manage my Apache server through the bash scripts in part 2.</p>
             </div>
           </div>
 
