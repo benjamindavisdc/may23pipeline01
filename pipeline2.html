@@ -55,7 +55,7 @@
         <li><a class="nav-link scrollto" href="pipeline1.html">1. Automated Infrastructure Blueprint</a></li>
         <li><a class="nav-link scrollto" href="pipeline2.html">2. CI/CD Container Deployment</a></li>
         <li><a class="nav-link scrollto" href="pipeline3.html">3. Serverless Datafeed</a></li>
-        <li><a class="nav-link scrollto active" href="#contact">Contact</a></li>
+        <li><a class="nav-link scrollto active" href="https://www.linkedin.com/in/benjamin-davis-awssaa-dc/" target="_blank">Contact</a></li>
       </ul>
       <i class="bi bi-list mobile-nav-toggle"></i>
     </nav><!-- .navbar -->
@@ -70,7 +70,7 @@
       <div class="row">
         <div class="col-lg-6 pt-4 pt-lg-0 order-2 order-lg-1 d-flex flex-column justify-content-center">
           <h1>CI/CD Container Deployment and Configuration</h1>
-          <h2>The site you are viewing is on an Apache container which recives updates from a linked Jenkins container. See how it works below.</h2>
+          <h2>The site you are viewing is on an Apache container which recives updates from a linked Jenkins container Pipeline. See how it works below.</h2>
           
         </div>
         <div class="col-lg-6 order-1 order-lg-2 hero-img">
@@ -108,10 +108,10 @@
           <p class="description">Thanks to the fact I am running off a standard AMI, it's possible to reliably install whatever software I need through scripting.</p>
         </div>
 
-        <p>The first step is to build an instance and set up the basic infrastructure.</p>
-        <p>This file contains the region and VPC info for my entire project,</p>
-        <p>a database which will be used for the full-stack X-Ray app's code in part 3,</p>
-        <p>and the server runs my bootstrap script which will configure the servers in part 2.</p>
+        <p>1</p>
+        <p>2</p>
+        <p>3</p>
+        <p>4</p>
 
       </div>
     </div>
@@ -128,12 +128,12 @@
         <h3>Apache Dockerfile</h3>
 
         <div class="icon-box">
-          <div class="icon"><i class="bx bx-key"></i></div>
-          <h4 class="title"><a href="">Authorized Access Only</a></h4>
-          <p class="description">When working with multiple servers, we can specify security rules for each one.</p>
+          <div class="icon"><i class="bx bx-file"></i></div>
+          <h4 class="title"><a href="">My Main Container</a></h4>
+          <p class="description">The Dockerfile is easy to configure and keeps Apache isolated.</p>
         </div>
-        <p>Next I built in the security settings to give the server access to the internet.</p>
-        <p>AWS also manages my SSH keys, which allow me to remotely troubleshoot my servers if there's a problem with the bootstrap script.</p>
+        <p>1</p>
+        <p>2</p>
 
           
       </div>
@@ -217,14 +217,13 @@ EXPOSE 8080</code>
 
         <div class="icon-box">
           <div class="icon"><i class="bx bx-paint-roll"></i></div>
-          <h4 class="title"><a href="">Event Driven Architecture</a></h4>
-          <p class="description">Every time my source code is updated, Lambda will update my database.</p>
+          <h4 class="title"><a href="">This builds the Jenkins container and opens a separate port.</a></h4>
+          <p class="description">1</p>
         </div>
-        <p>The next step is to build the serverless resources needed.</p>
-        <p>This program is a combination of AWS resources, and Python scripting. AWS creates the resources (the Lambda function and all of its dependencies) and Python tells it what to do.</p>
-        <p>The lambda function is the first half of the X-Ray app. It will scrape my repositories and store the data in the database made in Main.tf.</p>
-        <p>It's essential that the function be given access to the internet so that it can scrape the data it needs.</p>
-        <p>And Lambda must have the necessary permissions to write to the database so that it can store my data for retreival.</p>
+        <p>2</p>
+        <p>3</p>
+        <p>4</p>
+        <p>5</p>
       
       </div>
     </div>
@@ -243,11 +242,11 @@ EXPOSE 8080</code>
 
         <div class="icon-box">
           <div class="icon"><i class="bx bx-file"></i></div>
-          <h4 class="title"><a href="">Automated Infrastructure Pipeline</a></h4>
-          <p class="description">The script gives instructions to the AWS deployment server to build the Terraform configuration.</p>
+          <h4 class="title"><a href="">This is the secret sauce.</a></h4>
+          <p class="description">The Jenkins Pipeline is what allows me to use git to quickly update my site from my local machine.</p>
         </div>
-        <p>Once the Terraform files have been uploaded to AWS, we need to configure how it will build our servers.</p>
-        <p>AWS CodeCommit sends the code to AWS CodeBuild which deploys the buildspec script and creates the resources from our .tf files.</p>
+        <p>1</p>
+        <p>2</p>
 
         <div><a href="pipeline3.html" class="btn-get-started scrollto">See Phase 3</a></div>
 
