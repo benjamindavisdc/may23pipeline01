@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -94,7 +93,7 @@
           <code class="language-bash">
             Phase 2
           </code>
-        </pre><p> This code is live from my Github Repo.</p>
+        </pre><p> This code is live from my <a href='https://github.com/benjamindavisdc/DockerInfrastructureFiles/blob/main/Docker/Jenkins/bootstrap.sh' target="blank">Github Repo.</a></p>
       </div>  
       
       </div>
@@ -108,10 +107,11 @@
           <p class="description">Thanks to the fact I am running off a standard AMI, it's possible to reliably install whatever software I need through scripting.</p>
         </div>
 
-        <p>1</p>
-        <p>2</p>
-        <p>3</p>
-        <p>4</p>
+        <p>The base layer of the server needs Docker and Docker Network so that it can host my containers and let them communicate.</p>
+        <p>Each container needs to be built and attached to the Docker network at the time of creation.</p>
+        <p>The Jenkins container will run my pipeline which takes the website code you are viewing, and moves it from Github to Apache.</p>
+        <p>The Apache container recieves my Web App from Jenkins and stores it in '/var/www/html/' which is hosted on port 80.</p>
+        <p>This bash script runs all of my other scripts and build files! In total, my entire web Infrastructure is only a couple of megabytes, small enough to fit on a floppy disc!</p>
 
       </div>
     </div>
@@ -129,11 +129,12 @@
 
         <div class="icon-box">
           <div class="icon"><i class="bx bx-file"></i></div>
-          <h4 class="title"><a href="">My Main Container</a></h4>
+          <h4 class="title"><a href="">My Apache image</a></h4>
           <p class="description">The Dockerfile is easy to configure and keeps Apache isolated.</p>
         </div>
-        <p>1</p>
-        <p>2</p>
+        <p>This Dockerfile builds an image that has Git, Apache, and the most recent copy of my Web App.</p>
+        <p>The /html/ directory holds all my web files and the container exposes a port to the internet.</p>
+        <p>While having Git and the Web App pre-installed isn't strictly necessary, it does help get my site running a bit faster, without having to trigger a Jenkins build to get us started.</p>
 
           
       </div>
@@ -167,7 +168,7 @@ EXPOSE 80
 
 # Start the Apache web server when the container launches
 CMD ["/usr/sbin/httpd", "-D", "FOREGROUND"]</code>
-          </pre><p> This code is live from my Github Repo.</p>
+          </pre><p> This code is live from my <a href='https://github.com/benjamindavisdc/DockerInfrastructureFiles/tree/main/Docker/Apache' target="blank">Github Repo.</a></p>
         </div>  
         </div>
       </div>
@@ -207,7 +208,7 @@ COPY Jenkinsfile /var/jenkins/Jenkinsfile
 # Expose port 443 for git clone
 EXPOSE 443
 EXPOSE 8080</code>
-        </pre><p> This code is live from my Github Repo.</p>
+        </pre><p> This code is live from my <a href='https://github.com/benjamindavisdc/DockerInfrastructureFiles/tree/main/Docker/Jenkins' target="blank">Github Repo.</a></p>
       </div>  
       
       </div>
@@ -217,13 +218,14 @@ EXPOSE 8080</code>
 
         <div class="icon-box">
           <div class="icon"><i class="bx bx-paint-roll"></i></div>
-          <h4 class="title"><a href="">This builds the Jenkins container and opens a separate port.</a></h4>
-          <p class="description">1</p>
+          <h4 class="title"><a href="">This builds the Jenkins image and opens a separate port.</a></h4>
+          <p class="description">Once built, the Jenkins container will run all of our update jobs to keep the site looking fresh.</p>
         </div>
-        <p>2</p>
-        <p>3</p>
-        <p>4</p>
-        <p>5</p>
+        <p>Jenkins is Java-based, so we need an up to date Java Developer Kit installed.</p>
+        <p>Once Jenkins is added to the container, all that's left is to open up a port so that it can recieve (443) and send (8080) data.</p>
+        <p>The Container still won't be able to run a pipeline unless it's connected to the network. We can build it using: <br><strong>"docker run --name my-jenkins-container -p 8080:8080 --network my-portfolio-network -d jenkins-image</strong>
+        </p>
+        
       
       </div>
     </div>
@@ -242,11 +244,17 @@ EXPOSE 8080</code>
 
         <div class="icon-box">
           <div class="icon"><i class="bx bx-file"></i></div>
-          <h4 class="title"><a href="">This is the secret sauce.</a></h4>
-          <p class="description">The Jenkins Pipeline is what allows me to use git to quickly update my site from my local machine.</p>
+          <h4 class="title"><a href="">This is the secret ingredient.</a></h4>
+          <p class="description">The Jenkins Pipeline is what allows me to use git to quickly update my site from anywhere.</p>
         </div>
-        <p>1</p>
-        <p>2</p>
+        <p>The Jenkins container is connected to a Github webhook, which tells Github to communicate with my server and  listen for incoming push data.
+        <p>This job triggers these build steps:</p>
+        <p>> My repo is cloned to a temporary directory<br>
+        > My current web directory is cleaned out<br>
+        > My new repo version is copied to the web directory<br>
+        > The temporary directory is cleaned out</p>
+        
+        <p>Each build takes approximately 2000ms on a small server.</p>
 
         <div><a href="pipeline3.html" class="btn-get-started scrollto">See Phase 3</a></div>
 
@@ -259,38 +267,49 @@ EXPOSE 8080</code>
           <pre>
             <code class="language-groovy" >
 pipeline {
-agent any
-stages {
-    stage("Clone Git Repository") {
-        steps {
-            dir('temp_repo') {
-                git(
-                    url: "https://github.com/user/may23pipeline01.git",
-                    branch: "main"
-                )
+    agent any
+    stages {
+        stage("Clone Git Repository") {
+            steps {
+                dir('temp_repo') {
+                    git(
+                        url: "https://github.com/benjamindavisdc/may23pipeline01.git",
+                        branch: "main"
+                    )
+                }
+            }
+        }
+        
+        stage('Clean Web Directory') {
+            steps {
+                script {
+                    sh '''
+                    # Remove all files from the Apache web directory
+                    docker exec my-apache-container rm -rf /var/www/html/*
+                    '''
+                }
+            }
+        }
+        
+        stage('Copy Files') {
+            steps {
+                script {
+                    sh '''
+                    # Copy new files to the Apache web directory
+                    docker cp temp_repo/. my-apache-container:/var/www/html/
+                    '''
+                }
+            }
+        }
+        
+        stage('Clean Up') {
+            steps {
+                sh 'rm -rf temp_repo'
             }
         }
     }
-
-    stage('Copy Files') {
-        steps {
-            script {
-                sh '''
-                # Html site, doesn't need any packaging
-                docker cp temp_repo/. my-apache-container:/var/www/html/
-                '''
-            }
-        }
-    }
-
-    stage('Clean Up') {
-        steps {
-            sh 'rm -rf temp_repo'
-        }
-    }
-}
 }</code>
-          </pre><p> This code is live from my Github Repo.</p>
+          </pre><p> This code is live from my <a href='https://github.com/benjamindavisdc/DockerInfrastructureFiles/tree/main/Docker/Jenkins' target="blank">Github Repo.</a></p>
         </div>  
         </div>
       </div>
