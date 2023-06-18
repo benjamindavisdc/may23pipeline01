@@ -30,15 +30,14 @@ RUN python3 -m venv /opt/flask-app/flask-venv && \
 COPY --from=builder /tmp/temp2/app.py /opt/flask-app/app.py
 COPY --from=builder /tmp/temp2/apache-flask.wsgi /var/www/apache-flask/apache-flask.wsgi
 COPY --from=builder /tmp/temp2/apache-flask.conf /etc/httpd/conf.d/apache-flask.conf
+COPY --from=builder /tmp/temp2/wsgi.conf /etc/httpd/conf.d/wsgi.conf
 COPY --from=builder /tmp/temp2/templates /var/www/apache-flask/templates
 COPY --from=builder /tmp/temp2/static /var/www/apache-flask/static
 COPY --from=builder /tmp/temp2/ /var/www/apache-flask/
 
-RUN rm /etc/httpd/conf.d/ssl.conf
-
-RUN ln -s /etc/httpd/conf.d/apache-flask.conf /etc/httpd/conf.d/ && \
-    ln -s /etc/httpd/conf.d/wsgi.conf /etc/httpd/conf.d/
-
+#RUN rm /etc/httpd/conf.d/ssl.conf
+RUN test ! -e /etc/httpd/conf.d/apache-flask.conf && ln -s /etc/httpd/conf.d/apache-flask.conf /etc/httpd/conf.d/ || true && \
+    test ! -e /etc/httpd/conf.d/wsgi.conf && ln -s /etc/httpd/conf.d/wsgi.conf /etc/httpd/conf.d/ || true
 RUN sed -i '/LoadModule headers_module/s/^#//g' /etc/httpd/conf.modules.d/00-base.conf
 
 
