@@ -34,6 +34,10 @@ COPY --from=builder /tmp/temp2/templates /var/www/apache-flask/templates
 COPY --from=builder /tmp/temp2/static /var/www/apache-flask/static
 COPY --from=builder /tmp/temp2/ /var/www/apache-flask/
 
+RUN a2dissite 000-default.conf
+RUN a2ensite apache-flask.conf
+RUN a2enmod headers
+
 # LINK apache config to docker logs.
 RUN ln -sf /dev/stdout /var/log/httpd/access_log && \
     ln -sf /dev/stderr /var/log/httpd/error_logs
