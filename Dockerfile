@@ -34,9 +34,13 @@ COPY --from=builder /tmp/temp2/templates /var/www/apache-flask/templates
 COPY --from=builder /tmp/temp2/static /var/www/apache-flask/static
 COPY --from=builder /tmp/temp2/ /var/www/apache-flask/
 
-RUN a2dissite 000-default.conf
-RUN a2ensite apache-flask.conf
-RUN a2enmod headers
+RUN rm /etc/httpd/conf.d/ssl.conf
+
+RUN ln -s /etc/httpd/conf.d/apache-flask.conf /etc/httpd/conf.d/ && \
+    ln -s /etc/httpd/conf.d/wsgi.conf /etc/httpd/conf.d/
+
+RUN sed -i '/LoadModule headers_module/s/^#//g' /etc/httpd/conf.modules.d/00-base.conf
+
 
 # LINK apache config to docker logs.
 RUN ln -sf /dev/stdout /var/log/httpd/access_log && \
