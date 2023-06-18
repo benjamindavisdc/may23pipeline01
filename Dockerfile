@@ -28,11 +28,11 @@ RUN python3 -m venv /opt/flask-app/flask-venv && \
 
 # Copy the files from the builder stage to the appropriate locations
 COPY --from=builder /tmp/temp2/app.py /opt/flask-app/app.py
-COPY --from=builder /tmp/temp2/apache-flask.wsgi var/www/apache-flask/apache-flask.wsgi
+COPY --from=builder /tmp/temp2/apache-flask.wsgi /var/www/apache-flask/apache-flask.wsgi
 COPY --from=builder /tmp/temp2/apache-flask.conf /etc/httpd/conf.d/apache-flask.conf
-COPY --from=builder /tmp/temp2/templates var/www/apache-flask/templates
-COPY --from=builder /tmp/temp2/static var/www/apache-flask/static
-COPY --from=builder /tmp/temp2/ var/www/apache-flask/
+COPY --from=builder /tmp/temp2/templates /var/www/apache-flask/templates
+COPY --from=builder /tmp/temp2/static /var/www/apache-flask/static
+COPY --from=builder /tmp/temp2/ /var/www/apache-flask/
 
 # LINK apache config to docker logs.
 RUN ln -sf /dev/stdout /var/log/httpd/access_log && \
