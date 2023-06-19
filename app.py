@@ -2,6 +2,7 @@ from flask import Flask, render_template
 import boto3
 
 app = Flask(__name__, static_url_path='/static')
+app.static_folder = 'static'
 
 @app.route('/')
 @app.route('/index.html')
