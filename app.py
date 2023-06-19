@@ -3,7 +3,7 @@ import boto3
 
 app = Flask(__name__, static_url_path='/static')
 
-@app.route('/index.html, /')
+@app.route('/index.html', '/')
 def index():
     data = get_data_from_database()
     return render_template('index.html', data=data)
