@@ -3,22 +3,22 @@ import boto3
 
 app = Flask(__name__, static_url_path='/static')
 
-@app.route('/')
+@app.route('/index.html, /')
 def index():
     data = get_data_from_database()
     return render_template('index.html', data=data)
 
-@app.route('/pipeline1')
+@app.route('/pipeline1.html')
 def pipeline1():
     data = get_data_from_database()
     return render_template('pipeline1.html', data=data)
 
-@app.route('/pipeline2')
+@app.route('/pipeline2.html')
 def pipeline2():
     data = get_data_from_database()
     return render_template('pipeline2.html', data=data)
 
-@app.route('/pipeline3')
+@app.route('/pipeline3.html')
 def pipeline3():
     data = get_data_from_database()
     return render_template('pipeline3.html', data=data)
