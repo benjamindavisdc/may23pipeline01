@@ -156,33 +156,163 @@ def lambda_handler(event, context):
 
   </div>
 </section><!-- End About Section -->
-
+<!--Section 2!-->
 <section id="blue" class="about">
   <div class="container">
 
     <div class="row">
       <div class="col-xl-6 col-lg-6 icon-boxes d-flex flex-column align-items-stretch justify-content-center py-5 px-lg-5">
-        <h3>Flask App</h3>
+        <h3>Apache-flask.conf</h3>
 
         <div class="icon-box">
           <div class="icon"><i class="bx bx-file"></i></div>
-          <h4 class="title"><a href="">Flask HTTP</a></h4>
-          <p class="description">The Flask app is almost done!</p>
+          <h4 class="title"><a href="">The server configuration file to allow Apache to serve our Flask site</a></h4>
+          <p class="description">Python Flask can't run as its own website, so it needs help from Apache.</p>
         </div>
-        <p>The app will pull the relevant entries from DynamoDB and add it to this textbox.</p>
-        
+        <p>This tells Apache how to handle incoming requests on ports 80 and 443. This way we can use HTTPS and an SSL certificate to keep our site secure, while also bringing in additional capabilties from Python scripting.</p>
+        <p>Setting up Apache to work with Flask isn't easy. It needs a whole new set of rules for how to handle a domain name and how to handle each type of web traffic. We also have to tell it where to look for our CSS and JS content.</p>
           
       </div>
 
       <div class="col-xl-6 col-lg-6 d-flex justify-content-center align-items-stretch position-relative">
         <div class="code-container">
-          <div class="code-banner">X-Ray - Python</div>
+          <div class="code-banner">X-Ray - Bash</div>
           <pre>
-            <code class="language-docker">
-Flask App Under Construction</code>
-          </pre><p> This code is under construction.</p>
+            <code class="language-bash">
+# -*- apache -*-
+
+<VirtualHost *:80>
+    ServerName flask-apache
+    DocumentRoot /var/www/html/apache-flask/
+    ErrorLog /var/log/httpd/error.log
+    CustomLog /var/log/httpd/access.log combined
+
+    # Python application integration
+    WSGIDaemonProcess /apache-flask processes=4 threads=20 python-path=/var/www/html/apache-flask/:/usr/bin/python
+    WSGIProcessGroup /apache-flask
+    WSGIScriptAlias / /var/www/html/apache-flask/apache-flask.wsgi
+
+    <Directory "/var/www/html/apache-flask/">
+        Header set Access-Control-Allow-Origin "*"
+        WSGIProcessGroup /apache-flask
+        WSGIApplicationGroup %{GLOBAL}
+        Options +ExecCGI
+        Options Indexes FollowSymLinks
+        AllowOverride None
+        Require all granted
+    </Directory>
+
+    Alias /static /var/www/html/apache-flask/static
+</VirtualHost>
+
+<VirtualHost *:443>
+    ServerName flask-apache
+    DocumentRoot /var/www/html/apache-flask/
+    ErrorLog /var/log/httpd/error.log
+    CustomLog /var/log/httpd/access.log combined
+
+    # SSL Configuration
+    SSLEngine on
+    SSLCertificateFile /etc/ssl/mycerts/drbenjamindavis_com.crt
+    SSLCertificateKeyFile /etc/ssl/mycerts/drbenjamindavis.com.key
+
+    # Python application integration
+    WSGIDaemonProcess /apache-flask-ssl processes=4 threads=20 python-path=/var/www/html/apache-flask/:/usr/bin/python
+    WSGIProcessGroup /apache-flask-ssl
+    WSGIScriptAlias / /var/www/html/apache-flask/apache-flask.wsgi
+
+    <Directory "/var/www/html/apache-flask/">
+        Header set Access-Control-Allow-Origin "*"
+        WSGIProcessGroup /apache-flask-ssl
+        WSGIApplicationGroup %{GLOBAL}
+        Options +ExecCGI
+        Options Indexes FollowSymLinks
+        AllowOverride None
+        Require all granted
+    </Directory>
+
+    Alias /static /var/www/html/apache-flask/static
+</VirtualHost>
+</code>
+           </pre><p>This code is live from my <a href="https://github.com/benjamindavisdc/may23pipeline01/blob/main/apache-flask.conf">Github Repo</a></p>
         </div>  
         </div>
+      </div>
+    </div>
+
+  </div>
+</section><!-- End About Section -->
+<!-- ======= About Section 3 ======= -->
+<section id="about" class="about">
+  <div class="container">
+
+    <div class="row">
+      <div class="col-xl-6 col-lg-6 d-flex justify-content-center align-items-stretch position-relative order-lg-1 order-xl-1 order-2">
+      <div class="code-container">
+        <div class="code-banner">X-Ray - Python</div>
+        <pre>
+          <code class="language-python">
+from flask import Flask, render_template
+import boto3
+
+app = Flask(__name__, static_url_path='/static')
+app.static_folder = 'static'
+
+@app.route('/')
+@app.route('/index.html')
+def index():
+    data = get_data_from_database()
+    return render_template('index.html', data=data)
+
+@app.route('/pipeline1.html')
+def pipeline1():
+    data = get_data_from_database()
+    return render_template('pipeline1.html', data=data)
+
+@app.route('/pipeline2.html')
+def pipeline2():
+    data = get_data_from_database()
+    return render_template('pipeline2.html', data=data)
+
+@app.route('/pipeline3.html')
+def pipeline3():
+    data = get_data_from_database()
+    return render_template('pipeline3.html', data=data)
+
+def get_data_from_database():
+    # Connect to DynamoDB and retrieve data
+    dynamodb = boto3.resource('dynamodb', region_name='us-east-1')
+    table_name = 'x-ray_table'
+    table = dynamodb.Table(table_name)
+    response = table.scan()
+    data = response['Items']
+    return data
+
+if __name__ == '__main__':
+    app.run()
+</code>
+        </pre><p>This code is under construction.</p>
+      </div>  
+      
+      </div>
+
+      <div class="col-xl-6 col-lg-6 icon-boxes d-flex flex-column align-items-stretch justify-content-center py-6 px-lg-6 order-lg-2 order-xl-2 order-1">
+        <h3>app.py</h3>
+
+        <div class="icon-box">
+          <div class="icon"><i class="bx bx-atom"></i></div>
+          <h4 class="title"><a href="">Flask App Code</a></h4>
+          <p class="description">This is the actual code that acts as the front end wrapper for our website.</p>
+        </div>
+
+
+        <p>I wanted to have the ability to 'GET' data from my database and add it to the site in real time. Regular HTML wouldn't cut it here.</p>
+        <p>This code actually takes the place of my 'index.html' page as the root of this site, and the Python code is executed and it routes the user to specific pages.</p>
+        <p>Now rather than simply delivering you HTML code, each page is actually a miniature Python app which delivers my HTML to you, along with any Python functions I want.</p>
+        <p>In this case, I have been using Python to fill these text boxes with code from my DynamoDB database. All I have to do is tell Python the name of the database entry and it returns the scraped text.</p>
+
+        
+
       </div>
     </div>
 
